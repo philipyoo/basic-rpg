@@ -1,6 +1,4 @@
 require 'rake'
-require 'rspec/core/rake_task'
-
 
 require ::File.expand_path('../config/environment', __FILE__)
 
@@ -86,16 +84,19 @@ namespace :generate do
 end
 
 namespace :db do
-  desc "Create the database at #{DB_NAME}"
+  desc "Drop, create, and migrate the database"
+  task :reset => [:drop, :create, :migrate]
+
+  desc "Create the databases at #{DB_NAME}"
   task :create do
-    puts "Creating database #{DB_NAME} if it doesn't exist..."
-    exec("createdb #{DB_NAME}")
+    puts "Creating development and test databases if they don't exist..."
+    system("createdb #{APP_NAME}_development && createdb #{APP_NAME}_test")
   end
 
   desc "Drop the database at #{DB_NAME}"
   task :drop do
-    puts "Dropping database #{DB_NAME}..."
-    exec("dropdb #{DB_NAME}")
+    puts "Dropping development and test databases..."
+    system("dropdb #{APP_NAME}_development && dropdb #{APP_NAME}_test")
   end
 
   desc "Migrate the database (options: VERSION=x, VERBOSE=false, SCOPE=blog)."
@@ -112,16 +113,16 @@ namespace :db do
     require APP_ROOT.join('db', 'seeds.rb')
   end
 
-  desc "rollback your migration--use STEPS=number to step back multiple times"
-  task :rollback do
-    steps = (ENV['STEPS'] || 1).to_i
-    ActiveRecord::Migrator.rollback('db/migrate', steps)
-    Rake::Task['db:version'].invoke if Rake::Task['db:version']
-  end
-
   desc "Returns the current schema version number"
   task :version do
     puts "Current version: #{ActiveRecord::Migrator.current_version}"
+  end
+
+  namespace :test do
+    desc "Migrate test database"
+    task :prepare do
+      system "rake db:migrate RACK_ENV=test"
+    end
   end
 end
 
@@ -130,7 +131,4 @@ task "console" do
   exec "irb -r./config/environment"
 end
 
-desc "Run the specs"
-RSpec::Core::RakeTask.new(:spec)
-
-task :default  => :specs
+task :default  => :spec
