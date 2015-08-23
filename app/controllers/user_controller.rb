@@ -49,9 +49,11 @@ end
 
 get '/logout' do
   auth_logout
-  redirect '/'
+  redirect '/login'
 end
 
+
+#profile page with all characters
 get '/profile/:id' do
   @all_characters = auth_current_user.characters
 
