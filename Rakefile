@@ -55,6 +55,13 @@ namespace :generate do
     end
   end
 
+  desc "rollback your migration--use STEPS=number to step back multiple times"
+  task :rollback do
+    steps = (ENV['STEPS'] || 1).to_i
+    ActiveRecord::Migrator.rollback('db/migrate', steps)
+    Rake::Task['db:version'].invoke if Rake::Task['db:version']
+  end
+
   desc "Create an empty model spec in spec, e.g., rake generate:spec NAME=user"
   task :spec do
     unless ENV.has_key?('NAME')

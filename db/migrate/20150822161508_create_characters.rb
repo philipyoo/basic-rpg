@@ -10,7 +10,7 @@ class CreateCharacters < ActiveRecord::Migration
 
       t.timestamps
 
-      t.references :users
+      t.references :user
     end
 
   end
