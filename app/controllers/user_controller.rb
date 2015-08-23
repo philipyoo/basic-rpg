@@ -1,3 +1,5 @@
+# home or landing page
 get '/' do
-  'yolo'
+  erb :index
 end
+
