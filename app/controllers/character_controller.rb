@@ -6,17 +6,26 @@ get '/profile/:user_id/character/:id' do
   erb :'characters/profile'
 end
 
-#
-post '/profile/:id/' do
+#create character page
+get '/profile/:user_id/select' do
+  p '?' * 100
+  erb :'characters/select'
+end
+
+post '/profile/:user_id/select' do
   #check stats (atk + armor)
+  p '*' * 100
 
-  if total_stats > x
-    redirect
-  else
+  p auth_current_user
+  p auth_current_user.characters
+
+  # if true  #edit total_stats > x
+    # redirect "/profile/#{auth_current_user.id}/character/"
+  # else
     auth_current_user.characters.create!(:name => params[:name], :hp => 80, :xp => 0, :level => 1, :atk => params[:atk], :armor => params[:armor])
-  end
+  # end
 
-  erb :"profile/#{auth_current_user.id}"
+  redirect "/profile/#{auth_current_user.id}"
 end
 
 
