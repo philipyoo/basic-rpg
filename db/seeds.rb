@@ -1,7 +1,9 @@
 
 # create admin user
 
-admin = User.create!(:username => 'admin', :password_hash => 'admin')
+admin = User.find_or_create_by!(:username => 'admin', :password_hash => 'admin')
+
+# User.find_or_create_by!(:username => 'yolo', :password_hash => 'admin')
 
 
 # create test characters

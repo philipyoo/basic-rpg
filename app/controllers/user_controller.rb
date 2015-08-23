@@ -1,20 +1,19 @@
-# home or landing page
+
 get '/' do
   erb :index
 end
 
 get '/login' do
-  @login = ''
+  @username = ''
   erb :'users/login'
 end
 
 post '/login' do
-  @login = params[:login]
-  user = User.find_by(:login => @login)
+  @username = params[:username]
+  user = User.find_by(:username => @username)
 
   if (user && user.password == params[:password])
     auth_login(user)
-    flash[:message] = 'You are logged in.'
     redirect '/profile'
   else
     @form_error = 'Unable to log you in.'
@@ -29,12 +28,11 @@ end
 
 post '/register' do
   @user = User.new
-  @user.login = params[:login]
+  @user.username = params[:username]
   @user.password = params[:password]
 
   if @user.save
     auth_login(@user)
-    flash[:message] = "Thank you for registering."
     redirect '/profile'
   else
     @form_error = "Unable to register you."
@@ -44,7 +42,9 @@ end
 
 get '/logout' do
   auth_logout
-  flash[:message] = "You have been logged out."
   redirect '/'
 end
 
+get '/profile' do
+  'nada'
+end
