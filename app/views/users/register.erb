@@ -7,7 +7,7 @@
 <form action="/register" method="POST">
   <div>
     <% if @user.errors[:username].any? %>
-      <div><%= @user.errors[:username].first %></div>
+      <div>Name <%= @user.errors[:username].first %></div>
     <% end %>
 
     <div>
@@ -18,7 +18,7 @@
 
   <div>
     <% if @user.errors[:password].any? %>
-      <div><%= @user.errors[:password].first %></div>
+      <div>Password <%= @user.errors[:password].first %></div>
     <% end %>
 
     <div>

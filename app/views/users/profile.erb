@@ -1,0 +1,14 @@
+<h1>Profile</h1>
+
+
+<div>
+  <form method="link" action="/profile/#{auth_current_user.id}/select">
+    <input class="btn" type="submit" value="Create Character"/>
+  </form>
+</div>
+
+<p>List all characters:</p>
+
+<% @all_characters.each do |char| %>
+  <li><%= char %></li>
+<% end %>

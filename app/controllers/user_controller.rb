@@ -40,7 +40,7 @@ post '/register' do
 
   if @user.save
     auth_login(@user)
-    redirect "/profile/#{user.id}"
+    redirect "/profile/#{auth_current_user.id}"
   else
     @form_error = "Unable to register you."
     erb :'users/register'
