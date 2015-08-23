@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
   has_many :characters
 
   validates_uniqueness_of :username
+  validates :username, presence: true
+  validates :password, presence: true, confirmation: true
 
   def password
     @password ||= Password.new(password_hash)
