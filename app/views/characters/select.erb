@@ -1,2 +1,48 @@
 <!-- Character creation -->
 
+<!-- display character image -->
+
+<!-- UX create scrollable creation page -->
+<!-- 1. Select Name, Select Avatar/Upload Avatar -->
+<!-- 2. ATK/ARMOR Stat selection -->
+<!-- 3. STRETCH == Character Types -->
+
+<h1>Character Creation</h1>
+
+<form action="/profile/<%= auth_current_user.id %>" method="POST">
+  <div>
+    <input name="name" type="text" />
+    <label for="name">Name</label>
+  </div>
+  
+  <div>
+    <p>Attack + Armor Cannot exceed 15 points</p>
+    <input name="atk" type="text" />
+    <label for="atk">ATK</label>
+  </div>
+
+  <div>
+    <input name="armor" type="text" />
+    <label for="armor">ARMOR</label>
+  </div>
+
+  <div>
+    <input class="btn" type="submit" name="action" value="Login" />
+  </div>
+</form>
+
+
+
+<!-- Cancel Button -->
+
+<a href="">Cancel</a>
+
+
+<!-- Play Game Button -->
+<!-- Action requires page to game interface -->
+
+<div>
+  <form method="link" action="">
+    <input class="btn" type="submit" value="Play Game"/>
+  </form>
+</div>

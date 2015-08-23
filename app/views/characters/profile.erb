@@ -12,3 +12,18 @@
   <li>Days Old: <%= @character.created_at %></li>
   <li>Last Played: <%= @character.updated_at %></li>
 </ul>
+
+
+<!-- Back Button -->
+
+<a href="/profile/<%=auth_current_user.id %>">Back to Profile Page</a>
+
+
+<!-- Play Game Button -->
+<!-- Action requires page to game interface -->
+
+<div>
+  <form method="link" action="">
+    <input class="btn" type="submit" value="Play Game"/>
+  </form>
+</div>
