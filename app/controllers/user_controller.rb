@@ -52,6 +52,24 @@ get '/logout' do
   redirect '/login'
 end
 
+#edit account
+get '/profile/:id/edit' do
+  @user = auth_current_user
+  erb :'users/edit'
+end
+
+put '/profile/:id' do |id|
+  auth_current_user.update(params[:user])
+  redirect "/profile/#{auth_current_user.id}"
+end
+
+#delete account
+delete '/profile/:id' do |id|
+  auth_logout
+  User.find(id).destroy
+  redirect '/'
+end
+
 
 #profile page with all characters
 get '/profile/:id' do

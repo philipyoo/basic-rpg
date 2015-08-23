@@ -1,6 +1,6 @@
 <h1>Profile</h1>
 
-<!-- Create character -->
+
 <div>
   <form method="link" action="/profile/<%= auth_current_user.id %>/select">
     <input class="btn" type="submit" value="Create Character"/>
@@ -8,10 +8,11 @@
 </div>
 
 
+
 <!-- If select character, lead to character page -->
 <p>List all characters:</p>
 
 <!-- route to a certain character if selected -->
 <% @all_characters.each do |char| %>
-  <li><a href="/profile/<%= auth_current_user.id %>/character/<%= char.id %>"><%= char %></a></li>
+  <li><a href="/profile/<%= auth_current_user.id %>/character/<%= char.id %>"><%= char.name %></a></li>
 <% end %>
