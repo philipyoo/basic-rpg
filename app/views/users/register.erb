@@ -1,0 +1,9 @@
+<h1>Register yo</h1>
+
+<% if @form_error %>
+  <div><%= @form_error %></div>
+<% end %>
+
+<form action="/register" method="POST">
+  <div>
+    <% if @user.errors[:login].any? %>
