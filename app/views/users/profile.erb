@@ -13,5 +13,5 @@
 
 <!-- route to a certain character if selected -->
 <% @all_characters.each do |char| %>
-  <li><a href="/profile/<%= auth_current_user.id %>/character/<5= char.id %>"><%= char %></a></li>
+  <li><a href="/profile/<%= auth_current_user.id %>/character/<%= char.id %>"><%= char %></a></li>
 <% end %>
