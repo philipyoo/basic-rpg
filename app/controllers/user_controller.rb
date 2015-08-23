@@ -4,17 +4,20 @@ get '/' do
 end
 
 get '/login' do
+  if auth_logged_in?
+    redirect "/profile/#{auth_current_user.id}"
+  end
   @username = ''
   erb :'users/login'
 end
 
 post '/login' do
   @username = params[:username]
-  user = User.find_by(:username => @username)
+  user = User.find_by_username(@username)
 
   if (user && user.password == params[:password])
     auth_login(user)
-    redirect '/profile'
+    redirect "/profile/#{user.id}"
   else
     @form_error = 'Unable to log you in.'
     erb :'users/login'
@@ -22,6 +25,10 @@ post '/login' do
 end
 
 get '/register' do
+  if auth_logged_in?
+    redirect "/profile/#{auth_current_user.id}"
+  end
+
   @user = User.new
   erb :'users/register'
 end
@@ -33,7 +40,7 @@ post '/register' do
 
   if @user.save
     auth_login(@user)
-    redirect '/profile'
+    redirect "/profile/#{auth_current_user.id}"
   else
     @form_error = "Unable to register you."
     erb :'users/register'
@@ -45,6 +52,8 @@ get '/logout' do
   redirect '/'
 end
 
-get '/profile' do
-  'nada'
+get '/profile/:id' do
+  @all_characters = auth_current_user.characters
+
+  erb :'users/profile'
 end
