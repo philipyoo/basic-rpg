@@ -7,3 +7,39 @@
 <form action="/register" method="POST">
   <div>
     <% if @user.errors[:login].any? %>
+      <div><%= @user.errors[:login].first %></div>
+    <% end %>
+
+    <div>
+      <input name="login" type="text" value="<%= @user.login %>" />
+      <label for="login">Username</label>
+    </div>
+  </div>
+
+  <div>
+    <% if @user.errors[:password].any? %>
+      <div><%= @user.errors[:password].first %></div>
+    <% end %>
+
+    <div>
+      <input name="password" type="text" />
+      <label for="password">Password</label>
+    </div>
+  </div>
+
+  <div>
+    <% if @user.errors[:password_confirmation].any? %>
+      <div><%= @user.errors[:password_confirmation].first %></div>
+    <% end %>
+
+    <div>
+      <input name="password_confirmation" type="text" />
+      <label for="password_confirmation">Confirm Password</label>
+    </div>
+  </div>
+
+  <div>
+    <input class="btn" type="submit" name="action" value="Register" />
+    <a class="btn" href="/">Cancel</a>
+  </div>
+</form>
