@@ -10,6 +10,7 @@ $(document).ready(function() {
   })
 
 
+  // NEED TO FIX
   var total = 15;
   var a = 0;
   var b = 0;
@@ -23,6 +24,7 @@ $(document).ready(function() {
     if (total > 0 && a < max) {
       total--;
       a++;
+      document.getElementById('ainput').innerHTML = a;
       document.getElementById('a').innerHTML = a;
       document.getElementById('total').innerHTML = total;
     }
@@ -32,6 +34,7 @@ $(document).ready(function() {
     if (total < max && a > 0) {
       total++;
       a--;
+      document.getElementById('ainput').innerHTML = a;
       document.getElementById('a').innerHTML = a;
       document.getElementById('total').innerHTML = total;
     }
@@ -41,6 +44,7 @@ $(document).ready(function() {
     if (total > 0 && b < max) {
       total--;
       b++;
+      document.getElementById('binput').innerHTML = b;
       document.getElementById('b').innerHTML = b;
       document.getElementById('total').innerHTML = total;
     }
@@ -50,6 +54,7 @@ $(document).ready(function() {
     if (total < max && b > 0) {
       b--;
       total++;
+      document.getElementById('binput').innerHTML = b;
       document.getElementById('b').innerHTML = b;
       document.getElementById('total').innerHTML = total;
     }

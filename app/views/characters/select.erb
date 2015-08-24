@@ -9,6 +9,8 @@
 
 <h1>Character Creation</h1>
 
+<!-- NEED TO FIX -->
+
 <form action="/profile/<%= auth_current_user.id %>/select" method="POST">
   <div>
     <input name="name" type="text" />
@@ -24,16 +26,15 @@
     <button id="add1">Add</button>
     <button id="sub1">Subtract</button>
 
-    <input name="atk" type="text" />
+    <input name="atk" type="text" id="ainput" />
     <label for="atk">ATK</label>
 
     <p>Armor:</p>
-    <div id="b"></div>
+    <div id="b" name="armor"></div>
     <button id="add2">Add</button>
     <button id="sub2">Subtract</button>
 
-
-    <input name="armor" type="text" />
+    <input name="armor" type="text" id="binput" />
     <label for="armor">ARMOR</label>
   </div>
 
