@@ -15,11 +15,12 @@
 
 <br/>
 <div>
+  <p>Delete Account:</p>
   <form action="/profile/<%= auth_current_user.id %>" method="POST">
     <input type="hidden" name="_method" value="DELETE">
 
-    Confirm Password: <input type="text" name="confirm_pw" value="" />
-    <input type="submit" class="btn" value="Delete" />
+    <input type="text" name="confirm_pw">
+    <input onclick="return confirm('Are you sure you want to delete your account?')" type="submit" class="btn" value="Delete" />
   </form>
 </div>
 <% end %>
