@@ -54,7 +54,6 @@ end
 
 #edit account
 get '/profile/:id/edit' do
-  @user = auth_current_user
   erb :'users/edit'
 end
 
@@ -68,7 +67,6 @@ delete '/profile/:id' do |id|
   user = User.find_by_id(id)
 
   if (user && user.password == params[:confirm_pw])
-    #confirm message
     User.find(id).destroy
     auth_logout
     redirect '/'
