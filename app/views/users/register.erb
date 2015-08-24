@@ -15,7 +15,7 @@
         <div>Name <%= @user.errors[:username].first %></div>
       <% end %>
 
-      <div class="col s6">
+      <div class="col s4">
         <input class="validate" id="username" name="username" type="text"  />
         <label for="username">Username</label>
       </div>
@@ -26,7 +26,7 @@
         <div>Password <%= @user.errors[:password].first %></div>
       <% end %>
 
-      <div class="col s6">
+      <div class="col s4">
         <input class="validate" id="password" name="password" type="password" />
         <label for="password">Password</label>
       </div>
@@ -37,7 +37,7 @@
         <div><%= @user.errors[:password_confirmation].first %></div>
       <% end %>
 
-      <div class="col s6">
+      <div class="col s4">
         <input class="validate" id="password" name="password_confirmation" type="password" />
         <label for="password_confirmation">Confirm Password</label>
       </div>
