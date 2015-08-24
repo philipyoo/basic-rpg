@@ -8,10 +8,11 @@ end
 
 #create character page
 get '/profile/:user_id/select' do
-  p '?' * 100
   erb :'characters/select'
 end
 
+#EDIT THIS
+#Add algorithm to check stats || javascript tools to create the algorithm and UX
 post '/profile/:user_id/select' do
   #check stats (atk + armor)
   p '*' * 100
@@ -29,17 +30,30 @@ post '/profile/:user_id/select' do
 end
 
 
+#implement later ##Maybe in-game
+#### Change name
+#### Change gear??
+#### code below copied from user_controller
+# #edit character
+# get '/profile/:id/edit' do
+#   erb :'users/edit'
+# end
+#
+# put '/profile/:id' do |id|
+#   auth_current_user.update(params[:user])
+#   redirect "/profile/#{auth_current_user.id}"
+# end
 
-post '/register' do
-  @user = User.new
-  @user.username = params[:username]
-  @user.password = params[:password]
+#delete character
+delete '/profile/:user_id/character/:id' do |user_id, id|
+  @character = Character.find_by_id(id)
+  user = User.find_by_id(user_id)
 
-  if @user.save
-    auth_login(@user)
-    redirect "/profile/#{auth_current_user.id}"
+  if (user && user.password == params[:confirm_pw])
+    @character.destroy
+    redirect "/profile/#{user_id}"
   else
-    @form_error = "Unable to register you."
-    erb :'users/register'
+    @form_error = "Incorrect Password."
+    erb :'characters/profile'
   end
 end

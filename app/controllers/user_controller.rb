@@ -52,9 +52,34 @@ get '/logout' do
   redirect '/login'
 end
 
+#edit account
+get '/profile/:id/edit' do
+  erb :'users/edit'
+end
+
+put '/profile/:id' do |id|
+  auth_current_user.update(params[:user])
+  redirect "/profile/#{auth_current_user.id}"
+end
+
+#delete account
+delete '/profile/:id' do |id|
+  user = User.find_by_id(id)
+
+  if (user && user.password == params[:confirm_pw])
+    User.find(id).destroy
+    auth_logout
+    redirect '/'
+  else
+    @form_error = "Incorrect Password."
+    erb :'users/edit'
+  end
+end
+
 
 #profile page with all characters
 get '/profile/:id' do
+  @user = User.find(params[:id])
   @all_characters = auth_current_user.characters
 
   erb :'users/profile'
