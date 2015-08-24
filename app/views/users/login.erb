@@ -1,25 +1,26 @@
 <% @skip_header = true %>
 <% @skip_footer = true %>
 
-<h1>Login yo</h1>
+<h1>Login</h1>
 
 <% if @form_error %>
   <div><%= @form_error %></div>
 <% end %>
 
-
-<form action="/login" method="POST">
-  <div>
-    <input name="username" type="text" value="<%= @username %>" />
+<div class="row">
+<form class="col s12" action="/login" method="POST">
+  <div class="input-field col s6">
+    <input class="validate" id="username" name="username" type="text" value="<%= @username %>" />
     <label for="username">Username</label>
   </div>
 
-  <div>
-    <input name="password" type="password" />
+  <div class="input-field col s6">
+    <input class="validate" id="password" name="password" type="password" />
     <label for="password">Password</label>
   </div>
 
-  <div>
+  <div class="input-field col s6">
     <input class="btn" type="submit" name="action" value="Login" />
   </div>
 </form>
+</div>
