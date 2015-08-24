@@ -81,6 +81,7 @@ end
 
 #profile page with all characters
 get '/profile/:id' do
+  @user = User.find(params[:id])
   @all_characters = auth_current_user.characters
 
   erb :'users/profile'
