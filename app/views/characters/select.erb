@@ -33,9 +33,13 @@
 
 
 
-<!-- Cancel Button -->
+<!-- Cancel and Redirect to profile page -->
 
-<a href="">Cancel</a>
+<div>
+  <form method="link" action="/profile/<%= auth_current_user.id %>">
+    <input class="btn" type="submit" value="Cancel"/>
+  </form>
+</div>
 
 
 <!-- Play Game Button -->
