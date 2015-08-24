@@ -1,0 +1,19 @@
+<% if auth_current_user %>
+<div>
+  <form action="/profile/<%= auth_current_user.id %>" method="POST">
+    <input type="hidden" name="_method" value="PUT">
+
+    Username: <input type="text" name="user[username]" value="<%= auth_current_user.username %>" /><br>
+    Password: <input type="text" name="user[password]" /><br>
+    <input type="submit">
+  </form>
+</div>
+
+<br/>
+<div>
+  <form action="/profile/<%= auth_current_user.id %>" method="POST">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="delete">
+  </form>
+</div>
+<% end %>
