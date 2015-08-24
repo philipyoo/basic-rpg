@@ -2,6 +2,7 @@
   <li><a href="/login">Login</a></li>
   <li><a href="/logout">Logout</a></li>
   <li><a href="/register">Register</a></li>
+  <li><a href="/profile/<%= auth_current_user.id %>/edit">Edit</a></li>
   <% if auth_logged_in? %>
     <li>Username: <%= auth_current_user.username %></li>
   <% end %>
