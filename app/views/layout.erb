@@ -14,6 +14,14 @@
   <!-- Load Vollkorn font -->
   <link href='http://fonts.googleapis.com/css?family=Vollkorn:400italic,400' rel='stylesheet' type='text/css'>
 
+  <!-- Materialize CSS -->
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/css/materialize.min.css">
+  <!-- Materialize CSS -->
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/js/materialize.min.js"></script>
+
+
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="/js/application.js"></script>
 
@@ -21,9 +29,9 @@
 </head>
 <body>
 <div id="content">
-  <%= erb :_header %>
+  <%= erb :_header unless @skip_header %>
   <%= yield %>
-  <!-- Input footer -->
+  <%= erb :_footer unless @skip_footer %>
 </div>
 </body>
 </html>
