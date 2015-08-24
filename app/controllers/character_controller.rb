@@ -33,6 +33,7 @@ end
 #implement later ##Maybe in-game
 #### Change name
 #### Change gear??
+#### code below copied from user_controller
 # #edit character
 # get '/profile/:id/edit' do
 #   erb :'users/edit'
