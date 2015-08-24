@@ -7,6 +7,8 @@ gem 'pg'
 gem 'sinatra'
 gem 'sinatra-contrib'
 
+gem 'materialize-sass'
+
 
 gem 'activesupport'
 gem 'activerecord'

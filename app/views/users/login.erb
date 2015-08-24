@@ -1,25 +1,39 @@
 <% @skip_header = true %>
 <% @skip_footer = true %>
 
-<h1>Login yo</h1>
+<h1>Login</h1>
 
 <% if @form_error %>
   <div><%= @form_error %></div>
 <% end %>
 
+<div class="row">
+  <form class="col s12" action="/login" method="POST">
 
-<form action="/login" method="POST">
-  <div>
-    <input name="username" type="text" value="<%= @username %>" />
-    <label for="username">Username</label>
-  </div>
+    <div class="row">
+      <div class="col s6">
+        <input class="validate" id="username" name="username" type="text" />
+        <label for="username">Username</label>
+      </div>
+    </div>
 
-  <div>
-    <input name="password" type="password" />
-    <label for="password">Password</label>
-  </div>
+    <div class="row">
+      <div class="col s6">
+        <input class="validate" id="password" name="password" type="password" />
+        <label for="password">Password</label>
+      </div>
+    </div>
 
-  <div>
-    <input class="btn" type="submit" name="action" value="Login" />
-  </div>
-</form>
+    <div class="row col">
+      <input class="btn" type="submit" name="action" value="Login" />
+    </div>
+
+  </form>
+</div>
+
+<div class="row col">
+  <p>Don't have an account yet? Register below:</p>
+  <form method="link" action="/register">
+    <input class="btn" type="submit" value="Register"/>
+  </form>
+</div>
