@@ -2,8 +2,13 @@
 
 <!-- display character image -->
 
+<h1>Character Page</h1>
+
 <ul>
-  <li>Name: <%= @character.name %></li>
+  <li>
+    <!-- Make this dynamic with javascript / EDIT name option  -->
+    Name: <%= @character.name %>
+  </li>
   <li>HP: <%= @character.hp %></li>
   <li>XP: <%= @character.xp %></li>
   <li>Level: <%= @character.level %></li>
@@ -16,9 +21,13 @@
 
 <!-- Back Button -->
 
-<a href="/profile/<%=auth_current_user.id %>">Back to Profile Page</a>
+<div>
+  <form method="link" action="/profile/<%=auth_current_user.id %>">
+    <input class="btn" type="submit" value="Back to Profile"/>
+  </form>
+</div>
 
-
+<% if auth_current_user %>
 <!-- Play Game Button -->
 <!-- Action requires page to game interface -->
 
@@ -27,3 +36,22 @@
     <input class="btn" type="submit" value="Play Game"/>
   </form>
 </div>
+
+
+<!-- Delete Character -->
+
+<% if @form_error %>
+  <div><%= @form_error %></div>
+<% end %>
+
+<br/>
+<div class="deleteform">
+  <p>Delete Character:</p>
+  <form action="/profile/<%= auth_current_user.id %>/character/<%= @character.id %>" method="POST">
+    <input type="hidden" name="_method" value="DELETE">
+
+    <input type="text" name="confirm_pw">
+    <input onclick="return confirm('Are you sure you want to delete this character?')" type="submit" class="btn" value="Delete" />
+  </form>
+</div>
+<% end %>
