@@ -65,9 +65,17 @@ end
 
 #delete account
 delete '/profile/:id' do |id|
-  auth_logout
-  User.find(id).destroy
-  redirect '/'
+  user = User.find_by_id(id)
+
+  if (user && user.password == params[:confirm_pw])
+    #confirm message
+    User.find(id).destroy
+    auth_logout
+    redirect '/'
+  else
+    @form_error = "Incorrect Password."
+    erb :'users/edit'
+  end
 end
 
 

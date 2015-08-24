@@ -4,16 +4,22 @@
     <input type="hidden" name="_method" value="PUT">
 
     Username: <input type="text" name="user[username]" value="<%= auth_current_user.username %>" /><br>
-    Password: <input type="text" name="user[password]" /><br>
+    Password: <input type="text" name="user[password]" /><br/>
     <input type="submit">
   </form>
 </div>
+
+<% if @form_error %>
+  <div><%= @form_error %></div>
+<% end %>
 
 <br/>
 <div>
   <form action="/profile/<%= auth_current_user.id %>" method="POST">
     <input type="hidden" name="_method" value="DELETE">
-    <input type="delete">
+
+    Confirm Password: <input type="text" name="confirm_pw" value="" />
+    <input type="submit" class="btn" value="Delete" />
   </form>
 </div>
 <% end %>
