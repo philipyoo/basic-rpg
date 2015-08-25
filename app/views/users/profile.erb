@@ -1,12 +1,18 @@
 <h1>Profile</h1>
 <p>for <%= @user.username %></p>
-
+<%= params %><br/>
+<%= params[:id] %><br/>
+<%= auth_current_user.id %><br/>
+<%= @user %><br/>
+<%= @user.id == params[:id] %><br/>
+<%= 2 == 2 %>
+<% if auth_current_user.id == params[:id] %>
 <div>
   <form method="link" action="/profile/<%= auth_current_user.id %>/select">
     <input class="btn" type="submit" value="Create Character"/>
   </form>
 </div>
-
+<% end %>
 
 
 <!-- If select character, lead to character page -->
