@@ -6,7 +6,7 @@ class CreateCharacters < ActiveRecord::Migration
       t.integer :xp
       t.integer :level
       t.integer :atk
-      t.integer :armor
+      t.integer :def
 
       t.timestamps
 

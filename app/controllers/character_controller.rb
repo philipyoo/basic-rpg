@@ -14,7 +14,7 @@ end
 #EDIT THIS
 #Add algorithm to check stats || javascript tools to create the algorithm and UX
 post '/profile/:user_id/select' do
-  #check stats (atk + armor)
+  #check stats (atk + def)
   p '*' * 100
 
   p auth_current_user
@@ -23,7 +23,7 @@ post '/profile/:user_id/select' do
   # if true  #edit total_stats > x
     # redirect "/profile/#{auth_current_user.id}/character/"
   # else
-    auth_current_user.characters.create!(:name => params[:name], :hp => 80, :xp => 0, :level => 1, :atk => params[:atk], :armor => params[:armor])
+    auth_current_user.characters.create!(:name => params[:name], :hp => 80, :xp => 0, :level => 1, :atk => params[:atk], :def => params[:def])
   # end
 
   redirect "/profile/#{auth_current_user.id}"

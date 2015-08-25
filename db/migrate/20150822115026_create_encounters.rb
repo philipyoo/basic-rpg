@@ -5,7 +5,7 @@ class CreateEncounters < ActiveRecord::Migration
       t.integer :hp
       t.integer :level
       t.integer :atk
-      t.integer :armor
+      t.integer :def
 
     end
   end
