@@ -10,6 +10,28 @@
 <h1>Character Creation</h1>
 
 <!-- NEED TO FIX -->
+<div class="total-stuff">
+  <p>Attack + Armor Cannot exceed 15 points</p>
+  <p>Total Points Left: <div id="total">15</div></p>
+</div>
+
+<div class="attack-stuff">
+  <p>Attack:</p>
+
+  <div id="display-atk">0</div>
+
+  <button class="add" name="atk">Add</button>
+  <button class="sub" name="atk">Subtract</button>
+</div>
+
+<div class="defense-stuff">
+  <p>Armor:</p>
+
+  <div id="display-def">0</div>
+  <button class="add" name="def">Add</button>
+  <button class="sub" name="def">Subtract</button>
+</div>
+
 
 <form action="/profile/<%= auth_current_user.id %>/select" method="POST">
   <div>
@@ -18,23 +40,11 @@
   </div>
 
   <div>
-    <p>Attack + Armor Cannot exceed 15 points</p>
-    <!-- <p>Total Points Left: <div id="total"></div></p>
 
-    <p>Attack:</p>
-    <div id="a" name="atk"></div>
-    <button id="add1">Add</button>
-    <button id="sub1">Subtract</button> -->
-
-    <input name="atk" type="text" id="ainput" />
+    <input name="atk" type="hidden" id="ainput" />
     <label for="atk">ATK</label>
 
-    <!-- <p>Armor:</p>
-    <div id="b" name="armor"></div>
-    <button id="add2">Add</button>
-    <button id="sub2">Subtract</button> -->
-
-    <input name="def" type="text" id="binput" />
+    <input name="def" type="hidden" id="binput" />
     <label for="def">DEF</label>
   </div>
 
