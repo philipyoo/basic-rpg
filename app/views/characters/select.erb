@@ -9,9 +9,20 @@
 
 <h1>Character Creation</h1>
 
-<!-- NEED TO FIX -->
+<p>
+  Instructions: <br/>
+  Please input character name, assign stat points, and click on "Create" below.
+</p>
+
+<div class="row">
+  <div class="input-field col s4">
+    <input name="name" type="text" id="getName" />
+    <label class="active" for="name">Character Name</label>
+  </div>
+</div>
+
 <div class="total-stuff">
-  <p>Attack + Armor Cannot exceed 15 points</p>
+  <p>Assign stat points:</p>
   <p>Total Points Left: <div id="total">15</div></p>
 </div>
 
@@ -32,20 +43,17 @@
   <button class="sub" name="def">Subtract</button>
 </div>
 
+<br/>
 
-<form action="/profile/<%= auth_current_user.id %>/select" method="POST">
-  <div>
-    <input name="name" type="text" />
-    <label for="name">Name</label>
-  </div>
+<form action="/profile/<%= auth_current_user.id %>/select" method="POST" id="createCharForm">
+  <div class="hidden">
+    <input name="name" type="text" id="nameInput" value="" />
 
-  <div>
 
-    <input name="atk" type="hidden" id="ainput" />
-    <label for="atk">ATK</label>
+    <input name="atk" type="text" id="atkInput" value="" />
 
-    <input name="def" type="hidden" id="binput" />
-    <label for="def">DEF</label>
+
+    <input name="def" type="text" id="defInput" value="" />
   </div>
 
   <div>
@@ -53,7 +61,7 @@
   </div>
 </form>
 
-
+<br/>
 
 <!-- Cancel and Redirect to profile page -->
 
