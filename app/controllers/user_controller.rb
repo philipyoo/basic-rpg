@@ -54,12 +54,27 @@ end
 
 #edit account
 get '/profile/:id/edit' do
+  @user = User.find(params[:id])
   erb :'users/edit'
 end
 
 put '/profile/:id' do |id|
-  auth_current_user.update(params[:user])
-  redirect "/profile/#{auth_current_user.id}"
+  @user = User.find(params[:id])
+  @user.username = params[:username]
+  @user.password = params[:password]
+
+  if @user.save
+    auth_current_user.update(params[:user])
+    @form_message = "Edited account information"
+    erb :'users/edit'
+  else
+    @form_message = "Wrong Password"
+    erb :'users/edit'
+  end
+
+  # redirect "/profile/#{auth_current_user.id}"
+
+
 end
 
 #delete account
