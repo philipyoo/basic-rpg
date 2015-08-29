@@ -2,6 +2,7 @@
 get '/profile/:user_id/character/:id' do
   #routed from list of characters on profile
   @character = Character.find(params[:id])
+  @user = User.find(params[:user_id])
 
   erb :'characters/profile'
 end
