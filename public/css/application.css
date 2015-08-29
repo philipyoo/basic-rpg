@@ -75,3 +75,7 @@ code {
 html {
   padding: 2em;
 }
+
+.hidden {
+  display: none;
+}
