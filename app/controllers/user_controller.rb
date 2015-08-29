@@ -49,7 +49,7 @@ end
 
 get '/logout' do
   auth_logout
-  redirect '/login'
+  redirect '/'
 end
 
 #edit account
@@ -78,7 +78,7 @@ end
 
 
 #profile page with all characters
-get '/profile/:id' do 
+get '/profile/:id' do
   @user = User.find(params[:id])
   @all_characters = auth_current_user.characters
 

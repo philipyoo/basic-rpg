@@ -6,6 +6,7 @@
 <!-- 1. Select Name, Select Avatar/Upload Avatar -->
 <!-- 2. ATK/ARMOR Stat selection -->
 <!-- 3. STRETCH == Character Types -->
+<% %>
 
 <h1>Character Creation</h1>
 
@@ -49,13 +50,10 @@
   <div class="hidden">
     <input name="name" type="text" id="nameInput" value="" />
 
-
     <input name="atk" type="text" id="atkInput" value="" />
-
 
     <input name="def" type="text" id="defInput" value="" />
   </div>
-
   <div>
     <input class="btn" id="uniq-btn" type="submit" name="action" value="Create" />
   </div>
@@ -66,17 +64,5 @@
 <!-- Cancel and Redirect to profile page -->
 
 <div>
-  <form method="link" action="/profile/<%= auth_current_user.id %>">
-    <input class="btn" type="submit" value="Cancel"/>
-  </form>
-</div>
-
-
-<!-- Play Game Button -->
-<!-- Action requires page to game interface -->
-
-<div>
-  <form method="link" action="">
-    <input class="btn" type="submit" value="Play Game"/>
-  </form>
+  <a href="/profile/<%= @user.id %>" class="button btn">Cancel</a>
 </div>
