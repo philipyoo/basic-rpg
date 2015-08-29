@@ -93,7 +93,7 @@ var statSubmittal = function () {
   // on click action::
 
   $('#createCharForm').submit(function() {
-    var getName = $('input#getName').attr('value');
+    var getName = $('input#getName').val();
     console.log(getName);
     console.log("yolo")
     console.log($('input#getName'))
