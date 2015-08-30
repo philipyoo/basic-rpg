@@ -19,7 +19,7 @@ var homeToLogin = function() {
   $('#home-page-btn').on('click', function(e) {
     e.preventDefault();
     var some_cb = function(response) {
-      $('body').replaceWith(response);
+      $('#wrap-this-yield').replaceWith(response);
     };
 
     ajaxConstructor('get', '/login', null, 'html', some_cb);

@@ -1,39 +1,37 @@
-<div id="login-page">
 
-  <% @skip_header = true %>
-  <% @skip_footer = true %>
+<% @skip_header = true %>
+<% @skip_footer = true %>
 
-  <h1>Login</h1>
+<h1>Login</h1>
 
-  <% if @form_error %>
-    <div><%= @form_error %></div>
-  <% end %>
+<% if @form_error %>
+  <div><%= @form_error %></div>
+<% end %>
 
-  <div class="row">
-    <form class="col s12" action="/login" method="POST">
+<div class="row">
+  <form class="col s12" action="/login" method="POST">
 
-      <div class="row">
-        <div class="input-field col s4">
-          <input class="validate" id="username" name="username" type="text" />
-          <label for="username">Username</label>
-        </div>
+    <div class="row">
+      <div class="input-field col s4">
+        <input class="validate" id="username" name="username" type="text" />
+        <label for="username">Username</label>
       </div>
+    </div>
 
-      <div class="row">
-        <div class="input-field col s4">
-          <input class="validate" id="password" name="password" type="password" />
-          <label for="password">Password</label>
-        </div>
+    <div class="row">
+      <div class="input-field col s4">
+        <input class="validate" id="password" name="password" type="password" />
+        <label for="password">Password</label>
       </div>
+    </div>
 
-      <div class="row col">
-        <input class="btn" type="submit" name="action" value="Login" />
-      </div>
+    <div class="row col">
+      <input class="btn" type="submit" name="action" value="Login" />
+    </div>
 
-    </form>
-  </div>
+  </form>
+</div>
 
-  <div class="row col" id="register-link">
-    <p>Don't have an account yet? <a href="/register">Register</a></p>
-  </div>
+<div class="row col" id="register-link">
+  <p>Don't have an account yet? <a href="/register">Register</a></p>
 </div>
