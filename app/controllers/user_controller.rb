@@ -10,11 +10,7 @@ get '/login' do
 
   @username = ''
 
-  if request.xhr?
-    return (erb :'users/login', layout: false)
-  else
-    erb :'users/login'
-  end
+  erb :'users/login'
 end
 
 post '/login' do
@@ -37,11 +33,7 @@ get '/register' do
 
   @user = User.new
 
-  if request.xhr?
-    return (erb :'users/register', layout: false)
-  else
-    erb :'users/register'
-  end
+  erb :'users/register'
 end
 
 post '/register' do
@@ -94,7 +86,6 @@ put '/profile/:id' do |id|
   end
 
   # redirect "/profile/#{auth_current_user.id}"
-
 
 end
 
