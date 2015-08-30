@@ -1,26 +1,58 @@
-<% if auth_current_user %>
-<div>
-  <form action="/profile/<%= auth_current_user.id %>" method="POST">
-    <input type="hidden" name="_method" value="PUT">
+<% if auth_current_user.id === (params[:id].to_i) %>
 
-    Username: <input type="text" name="user[username]" value="<%= auth_current_user.username %>" /><br>
-    Password: <input type="text" name="user[password]" /><br/>
-    <input type="submit">
-  </form>
-</div>
+  <% if @form_message %>
+    <div><%= @form_message %></div>
+  <% end %>
 
-<% if @form_error %>
-  <div><%= @form_error %></div>
-<% end %>
+  <div class="row">
+    <form action="/profile/<%= auth_current_user.id %>" method="POST">
+        <input type="hidden" name="_method" value="PUT">
 
-<br/>
-<div>
-  <p>Delete Account:</p>
-  <form action="/profile/<%= auth_current_user.id %>" method="POST">
-    <input type="hidden" name="_method" value="DELETE">
+      <div class="row">
+        <% if @user.errors[:username].any? %>
+          <div>Name <%= @user.errors[:username].first %></div>
+        <% end %>
 
-    <input type="text" name="confirm_pw">
-    <input onclick="return confirm('Are you sure you want to delete your account?')" type="submit" class="btn" value="Delete" />
-  </form>
-</div>
+        <div class="input-field col s4">
+          <input type="text" name="user[username]" value="<%= auth_current_user.username %>" />
+          <label for="username">Username</label>
+        </div>
+      </div>
+
+      <div class="row">
+        <% if @user.errors[:password].any? %>
+          <div>Password <%= @user.errors[:password].first %></div>
+        <% end %>
+
+        <div class="input-field col s4">
+          <input type="password" name="user[password]" /><br/>
+          <label for="password">Password</label>
+        </div>
+
+        <div>
+          <input class="btn" type="submit" name="action" value="Edit" />
+        </div>
+      </div>
+
+    </form>
+  </div>
+
+
+
+  <br/>
+
+  <div>
+    <p>Delete Account:</p>
+    <form action="/profile/<%= auth_current_user.id %>" method="POST">
+      <input type="hidden" name="_method" value="DELETE">
+
+      <input type="text" name="confirm_pw">
+      <input onclick="return confirm('Are you sure you want to delete your account?')" type="submit" class="btn" value="Delete" />
+    </form>
+  </div>
+
+<% else %>
+  <!-- PUT IN PARTIAL FOR ERROR MSG -->
+
+  <p>You aren't allowed to see this.</p>
 <% end %>
