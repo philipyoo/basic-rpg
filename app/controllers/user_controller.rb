@@ -7,7 +7,6 @@ get '/login' do
   if auth_logged_in?
     redirect "/profile/#{auth_current_user.id}"
   end
-
   @username = ''
 
   erb :'users/login'

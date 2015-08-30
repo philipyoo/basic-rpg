@@ -14,8 +14,8 @@
   <li>Level: <%= @character.level %></li>
   <li>Attack: <%= @character.atk %></li>
   <li>Armor: <%= @character.def %></li>
-  <!-- <li>Days Old: <%= @character.created_at %></li>
-  <li>Last Played: <%= @character.updated_at %></li> -->
+  <!-- <li>Days Old: <%= @character.created_at %></li> -->
+  <!-- <li>Last Played: <%= @character.updated_at %></li> -->
 </ul>
 
 
@@ -27,7 +27,7 @@
 
 <br/>
 
-<% if auth_current_user.id === @user.id %>
+<% if @user_chars_by_id.include?( params[:id].to_i ) %>
   <!-- Play Game Button -->
   <!-- Action requires page to game interface -->
 

@@ -2,19 +2,29 @@ $(document).ready(function() {
   //Line 3 Fixes materialize css animations
   $('select').material_select();
 
-
+  homeToLogin();
 
   statAdjuster();
-
   statSubmittal();
 
 
 });
 
 ////////////////////////////////////////
-//// AJAXify something              ////
+////      AJAXify something         ////
 ////////////////////////////////////////
 
+// Home page to Login page
+var homeToLogin = function() {
+  $('#home-page-btn').on('click', function(e) {
+    e.preventDefault();
+    var some_cb = function(response) {
+      $('#wrap-this-yield').replaceWith(response);
+    };
+
+    ajaxConstructor('get', '/login', null, 'html', some_cb);
+  });
+}
 
 
 
@@ -22,37 +32,25 @@ $(document).ready(function() {
 ////////////////////////////////////////
 ////      AJAX Constructor Yo       ////
 ////////////////////////////////////////
-// How to correctly use callbacks??
-
-// var construction = function(m, u, d, cb) {
-//   function(e) {
-//     e.preventDefault();
-//
-//     var method = m;
-//     var url = u;
-//     var data = d;
-//     var dataType = "json";
-//
-//     var request = $.ajax({
-//       url: url,
-//       method: method,
-//       data: data,
-//       dataType: dataType
-//     });
-//
-//     request.done(function(response){
-//       console.log(response);
-//       cb(response)
-//     });
-//
-//     request.fail(function(response){
-//       console.log("Failed, Fix it man");
-//     });
-//   }
-// };
+// TODO: Create AJAX constructor for AJAX use
 
 
-
+var ajaxConstructor = function(m, u, d, dt, cb){
+  $.ajax({
+    url: u,
+    method: m,
+    data: d,
+    dataType: dt
+  })
+  .done(function(response){
+    console.log(response);
+    cb(response)
+  })
+  .fail(function(response){
+    console.log("Failed, Fix it man");
+    console.log(response)
+  });
+}
 
 
 ////////////////////////////////////////
