@@ -5,16 +5,26 @@ $(document).ready(function() {
   homeToLogin();
 
   statAdjuster();
-
   statSubmittal();
 
 
 });
 
 ////////////////////////////////////////
-//// AJAXify something              ////
+////      AJAXify something         ////
 ////////////////////////////////////////
 
+// Home page to Login page
+var homeToLogin = function() {
+  $('#home-page-btn').on('click', function(e) {
+    e.preventDefault();
+    var some_cb = function(response) {
+      $('body').replaceWith(response);
+    };
+
+    ajaxConstructor('get', '/login', null, 'html', some_cb);
+  });
+}
 
 
 
@@ -22,36 +32,25 @@ $(document).ready(function() {
 ////////////////////////////////////////
 ////      AJAX Constructor Yo       ////
 ////////////////////////////////////////
-// How to correctly use callbacks??
 // TODO: Create AJAX constructor for AJAX use
 
-  var homeToLogin = function() {
-    $('#home-page-btn').on('click', function(e){
-      e.preventDefault();
-    var some_cb = function(response) {
-      $('body').replaceWith(response);
-    }
-    ajaxRequest('get', '/login', null, some_cb);
+
+var ajaxConstructor = function(m, u, d, dt, cb){
+  $.ajax({
+    url: u,
+    method: m,
+    data: d,
+    dataType: dt
   })
+  .done(function(response){
+    console.log(response);
+    cb(response)
+  })
+  .fail(function(response){
+    console.log("Failed, Fix it man");
+    console.log(response)
+  });
 }
-
-var ajaxRequest = function(m, u, d, cb){
-$.ajax({
-  url: u,
-  method: m,
-  data: d
-})
-.done(function(response){
-  console.log(response);
-  cb(response)
-})
-.fail(function(response){
-  console.log(response)
-  console.log("Failed, Fix it man");
-});
-}
-
-
 
 
 ////////////////////////////////////////

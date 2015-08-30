@@ -4,16 +4,12 @@ get '/' do
 end
 
 get '/login' do
-  if request.xhr?
-    # @username = ''
-    erb :'users/login', {layout: false}
-  else
-    if auth_logged_in?
-      redirect "/profile/#{auth_current_user.id}"
-    end
-    @username = ''
-    erb :'users/login'
+  if auth_logged_in?
+    redirect "/profile/#{auth_current_user.id}"
   end
+  @username = ''
+
+  erb :'users/login'
 end
 
 post '/login' do
