@@ -30,5 +30,15 @@ class User < ActiveRecord::Base
     (pw == pwconfirm) && (pw.size > 0)
   end
 
+  # get all character ids for user
+
+  def get_all_characters
+    all_chars = []
+    self.characters.each do |character|
+      all_chars << character.id
+    end
+
+    all_chars
+  end
 
 end

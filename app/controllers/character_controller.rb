@@ -4,6 +4,9 @@ get '/profile/:user_id/character/:id' do
   @character = Character.find(params[:id])
   @user = User.find(params[:user_id])
 
+  @user_chars_by_id = @user.get_all_characters
+
+
   erb :'characters/profile'
 end
 
