@@ -2,9 +2,7 @@ $(document).ready(function() {
   //Line 3 Fixes materialize css animations
   $('select').material_select();
 
-  getLogin();
-  getRegister();
-  postStartPages();
+
 
   statAdjuster();
 
@@ -14,102 +12,9 @@ $(document).ready(function() {
 });
 
 ////////////////////////////////////////
-//// AJAXify my login/registration  ////
+//// AJAXify something              ////
 ////////////////////////////////////////
 
-var getLogin = function() {
-  $('a#login-link').on('click', function(e) {
-    e.preventDefault();
-
-    console.log(this);
-
-    var url = $(this).attr('href');
-
-    var getLoginPage = $.ajax({
-      method: 'get',
-      url: url,
-      dataType: "html"
-    });
-
-    getLoginPage.done(function(response) {
-      console.log("i'm in the done block");
-      console.log(response);
-      $('div#register-page').html(response);
-      // $('div#register-page').addClass('hidden');
-    });
-
-    getLoginPage.fail(function(response) {
-      console.log("i r failzorz")
-    });
-  })
-}
-
-var getRegister = function() {
-  $('a#register-link').on('click', function(e) {
-    e.preventDefault();
-
-    console.log(this);
-
-    var url = $(this).attr('href');
-
-    var getRegisterPage = $.ajax({
-      method: 'get',
-      url: url,
-      dataType: "html"
-    });
-
-    getRegisterPage.done(function(response) {
-      console.log("i'm in the done block");
-      console.log(response);
-      $('div#login-page').html(response);
-      // $('div#login-page').addClass('hidden');
-    });
-
-    getRegisterPage.fail(function(response) {
-      console.log("i r failzorz");
-    });
-  })
-}
-
-var postStartPages = function() {
-  $('#wrap-this-yield').on('submit', 'form', function(e){
-    e.preventDefault();
-
-    var url = $(this).attr("href");
-
-    var postStartPages = $.ajax({
-      method: 'post',
-      url: url,
-      dataType: "html",
-      data: $(this).serialize()
-    });
-
-    postStartPages.done(function(response){
-      console.log(response);
-      var getId = response[:id]
-      window.location = "/profile/getId"
-    })
-  });
-}
-
-
-
-
-  // $('.survey-container').on('submit', 'form', function(e){
-  //   e.preventDefault();
-  //    var url = $(this).attr("href");
-  //   var postSurveyForm = $.ajax({
-  //   method: 'post',
-  //   url: url,
-  //   dataType: "json",
-  //   data: $(this).serialize()
-  //   })
-  //     postSurveyForm.done(function(response){
-  //       console.log("YOU ARE THE ONE MORPHEUS")
-  //       console.log(response);
-  //
-  //    })
-  // });
 
 
 
