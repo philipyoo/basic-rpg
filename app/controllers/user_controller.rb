@@ -35,14 +35,24 @@ end
 
 post '/register' do
   @user = User.new
+
+  test_pw = params[:password]
+  confirm_pw = @user.password_confirmation(params)
+
   @user.username = params[:username]
   @user.password = params[:password]
 
-  if @user.save
+  if confirm_pw && @user.save
     auth_login(@user)
     redirect "/profile/#{auth_current_user.id}"
   else
-    @form_error = "Unable to register you."
+    if test_pw.size == 0
+      @form_error = "Dude... Type in a password."
+    elsif confirm_pw == false
+      @form_error = "Dude... You typed your confirmation password incorrecty."
+    else
+      @form_error = "Username has already been taken. Please select another Username."
+    end
     erb :'users/register'
   end
 end

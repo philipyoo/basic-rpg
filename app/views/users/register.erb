@@ -32,8 +32,6 @@
       </div>
     </div>
 
-
-
     <div class="row">
       <% if @user.errors[:password_confirmation].any? %>
         <div><%= @user.errors[:password_confirmation].first %></div>
@@ -47,7 +45,11 @@
 
     <div>
       <input class="btn" type="submit" name="action" value="Register" />
-      <a class="btn" href="/">Cancel</a>
     </div>
   </form>
+
+  <div class="row col" id="login-link">
+    <p>Already have an account? <a href="/login">Log In</a></p>
+  </div>
+
 </div>
