@@ -7,8 +7,14 @@ get '/login' do
   if auth_logged_in?
     redirect "/profile/#{auth_current_user.id}"
   end
+
   @username = ''
-  erb :'users/login'
+
+  if request.xhr?
+    return (erb :'users/login', layout: false)
+  else
+    erb :'users/login'
+  end
 end
 
 post '/login' do
@@ -30,7 +36,12 @@ get '/register' do
   end
 
   @user = User.new
-  erb :'users/register'
+
+  if request.xhr?
+    return (erb :'users/register', layout: false)
+  else
+    erb :'users/register'
+  end
 end
 
 post '/register' do
