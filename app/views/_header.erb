@@ -18,6 +18,7 @@
           <%= auth_current_user.username %>
         </a>
 
+        <li><a href="/profile/<%= auth_current_user.id %>">Profile</a></li>
         <li><a href="/profile/<%= auth_current_user.id %>/edit">Edit</a></li>
         <li><a href="/logout">Logout</a></li>
       <% else %>
