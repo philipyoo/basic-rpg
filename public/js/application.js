@@ -2,6 +2,10 @@ $(document).ready(function() {
   //Line 3 Fixes materialize css animations
   $('select').material_select();
 
+  getLogin();
+  getRegister();
+  postStartPages();
+
   statAdjuster();
 
   statSubmittal();
@@ -9,8 +13,146 @@ $(document).ready(function() {
 
 });
 
+////////////////////////////////////////
+//// AJAXify my login/registration  ////
+////////////////////////////////////////
+
+var getLogin = function() {
+  $('a#login-link').on('click', function(e) {
+    e.preventDefault();
+
+    console.log(this);
+
+    var url = $(this).attr('href');
+
+    var getLoginPage = $.ajax({
+      method: 'get',
+      url: url,
+      dataType: "html"
+    });
+
+    getLoginPage.done(function(response) {
+      console.log("i'm in the done block");
+      console.log(response);
+      $('div#register-page').html(response);
+      // $('div#register-page').addClass('hidden');
+    });
+
+    getLoginPage.fail(function(response) {
+      console.log("i r failzorz")
+    });
+  })
+}
+
+var getRegister = function() {
+  $('a#register-link').on('click', function(e) {
+    e.preventDefault();
+
+    console.log(this);
+
+    var url = $(this).attr('href');
+
+    var getRegisterPage = $.ajax({
+      method: 'get',
+      url: url,
+      dataType: "html"
+    });
+
+    getRegisterPage.done(function(response) {
+      console.log("i'm in the done block");
+      console.log(response);
+      $('div#login-page').html(response);
+      // $('div#login-page').addClass('hidden');
+    });
+
+    getRegisterPage.fail(function(response) {
+      console.log("i r failzorz");
+    });
+  })
+}
+
+var postStartPages = function() {
+  $('#wrap-this-yield').on('submit', 'form', function(e){
+    e.preventDefault();
+
+    var url = $(this).attr("href");
+
+    var postStartPages = $.ajax({
+      method: 'post',
+      url: url,
+      dataType: "html",
+      data: $(this).serialize()
+    });
+
+    postStartPages.done(function(response){
+      console.log(response);
+      var getId = response[:id]
+      window.location = "/profile/getId"
+    })
+  });
+}
 
 
+
+
+  // $('.survey-container').on('submit', 'form', function(e){
+  //   e.preventDefault();
+  //    var url = $(this).attr("href");
+  //   var postSurveyForm = $.ajax({
+  //   method: 'post',
+  //   url: url,
+  //   dataType: "json",
+  //   data: $(this).serialize()
+  //   })
+  //     postSurveyForm.done(function(response){
+  //       console.log("YOU ARE THE ONE MORPHEUS")
+  //       console.log(response);
+  //
+  //    })
+  // });
+
+
+
+
+////////////////////////////////////////
+////      AJAX Constructor Yo       ////
+////////////////////////////////////////
+// How to correctly use callbacks??
+
+// var construction = function(m, u, d, cb) {
+//   function(e) {
+//     e.preventDefault();
+//
+//     var method = m;
+//     var url = u;
+//     var data = d;
+//     var dataType = "json";
+//
+//     var request = $.ajax({
+//       url: url,
+//       method: method,
+//       data: data,
+//       dataType: dataType
+//     });
+//
+//     request.done(function(response){
+//       console.log(response);
+//       cb(response)
+//     });
+//
+//     request.fail(function(response){
+//       console.log("Failed, Fix it man");
+//     });
+//   }
+// };
+
+
+
+
+
+////////////////////////////////////////
+//// CHARACTER CREATION STAT POINTS ////
+////////////////////////////////////////
 
 function SetInitialStats() {
   MAX = 15;
@@ -88,16 +230,9 @@ SetInitialStats.prototype.adjDef = function(buttonName, direction) {
 // Now transition the div numbers and transfer to form on submittal
 // Maybe AJAX??
 
-//NAME HERE NOT XFERRING. FIX THIS
 var statSubmittal = function () {
-  // on click action::
-
   $('#createCharForm').submit(function() {
     var getName = $('input#getName').val();
-    console.log(getName);
-    console.log("yolo")
-    console.log($('input#getName'))
-
     $('input#nameInput').val(getName);
 
     var getAtk = $('#display-atk').text();
@@ -105,20 +240,29 @@ var statSubmittal = function () {
 
     var getDef = $('#display-def').text();
     $('input#defInput').val(parseInt(getDef));
-
-
   })
 };
-//
-    // var inputName = $('#createCharForm')
-                  // .attr("type", "hidden")
-                  // .attr("name", "name").val(getName)
 
-    // $('#createCharForm').append($(inputName));
-// var input = $("<input>", { type: "hidden", name: "mydata", value: "bla" }); $('#form1').append($(input));
+
+////////////////////////////////////////
+//// CHARACTER PAGE DELETE OPTION   ////
+////////////////////////////////////////
+
+// function processDeleteCharacterForm(e) {
+//     if (e.preventDefault) e.preventDefault();
 //
+//     /* do what you want with the form */
 //
-// var input = $("<input>")
-//                .attr("type", "hidden")
-//                .attr("name", "mydata").val("bla");
-// $('#form1').append($(input));
+//     // You must return false to prevent the default form behavior
+//     return false;
+// }
+//
+// var form = document.getElementById('my-form');
+// if (form.attachEvent) {
+//     form.attachEvent("submit", processForm);
+// } else {
+//     form.addEventListener("submit", processForm);
+// }
+
+
+//

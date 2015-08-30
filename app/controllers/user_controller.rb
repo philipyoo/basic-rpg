@@ -7,8 +7,14 @@ get '/login' do
   if auth_logged_in?
     redirect "/profile/#{auth_current_user.id}"
   end
+
   @username = ''
-  erb :'users/login'
+
+  if request.xhr?
+    return (erb :'users/login', layout: false)
+  else
+    erb :'users/login'
+  end
 end
 
 post '/login' do
@@ -30,36 +36,66 @@ get '/register' do
   end
 
   @user = User.new
-  erb :'users/register'
+
+  if request.xhr?
+    return (erb :'users/register', layout: false)
+  else
+    erb :'users/register'
+  end
 end
 
 post '/register' do
   @user = User.new
+
+  test_pw = params[:password]
+  confirm_pw = @user.password_confirmation(params)
+
   @user.username = params[:username]
   @user.password = params[:password]
 
-  if @user.save
+  if confirm_pw && @user.save
     auth_login(@user)
     redirect "/profile/#{auth_current_user.id}"
   else
-    @form_error = "Unable to register you."
+    if test_pw.size == 0
+      @form_error = "Dude... Type in a password."
+    elsif confirm_pw == false
+      @form_error = "Dude... You typed your confirmation password incorrecty."
+    else
+      @form_error = "Username has already been taken. Please select another Username."
+    end
     erb :'users/register'
   end
 end
 
 get '/logout' do
   auth_logout
-  redirect '/login'
+  redirect '/'
 end
 
 #edit account
 get '/profile/:id/edit' do
+  @user = User.find(params[:id])
   erb :'users/edit'
 end
 
 put '/profile/:id' do |id|
-  auth_current_user.update(params[:user])
-  redirect "/profile/#{auth_current_user.id}"
+  @user = User.find(params[:id])
+  @user.username = params[:username]
+  @user.password = params[:password]
+
+  if @user.save
+    auth_current_user.update(params[:user])
+    @form_message = "Edited account information"
+    erb :'users/edit'
+  else
+    @form_message = "Wrong Password"
+    erb :'users/edit'
+  end
+
+  # redirect "/profile/#{auth_current_user.id}"
+
+
 end
 
 #delete account
@@ -78,7 +114,7 @@ end
 
 
 #profile page with all characters
-get '/profile/:id' do 
+get '/profile/:id' do
   @user = User.find(params[:id])
   @all_characters = auth_current_user.characters
 

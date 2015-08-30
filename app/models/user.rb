@@ -7,9 +7,10 @@ class User < ActiveRecord::Base
 
   validates_uniqueness_of :username
   validates :username, presence: true
-  validates :password, presence: true
+  validates :password_hash, presence: true, confirmation: true
 
-  validates_confirmation_of :password
+
+  # bcrypt magic
 
   def password
     @password ||= Password.new(password_hash)
@@ -19,5 +20,15 @@ class User < ActiveRecord::Base
     @password = Password.create(new_password)
     self.password_hash = @password
   end
+
+  # registration password confirmation
+
+  def password_confirmation(params)
+    pw = params[:password]
+    pwconfirm = params[:password_confirmation]
+
+    (pw == pwconfirm) && (pw.size > 0)
+  end
+
 
 end

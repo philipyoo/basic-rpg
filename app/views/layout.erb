@@ -31,7 +31,11 @@
 
 
   <%= erb :_header unless @skip_header %>
-  <%= yield %>
+
+  <div id='wrap-this-yield'>
+    <%= yield %>
+  </div>
+
   <%= erb :_footer unless @skip_footer %>
 
 

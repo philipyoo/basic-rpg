@@ -2,23 +2,22 @@
 get '/profile/:user_id/character/:id' do
   #routed from list of characters on profile
   @character = Character.find(params[:id])
+  @user = User.find(params[:user_id])
 
   erb :'characters/profile'
 end
 
 #create character page
 get '/profile/:user_id/select' do
+  @user = User.find(params[:user_id])
   erb :'characters/select'
 end
 
 #EDIT THIS
 #Add algorithm to check stats || javascript tools to create the algorithm and UX
 post '/profile/:user_id/select' do
-  #check stats (atk + def)
-  p '*' * 100
+  @user = User.find(params[:user_id])
 
-  p auth_current_user
-  p auth_current_user.characters
 
   # if true  #edit total_stats > x
     # redirect "/profile/#{auth_current_user.id}/character/"

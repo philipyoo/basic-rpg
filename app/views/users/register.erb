@@ -1,51 +1,58 @@
-<% @skip_header = true %>
-<% @skip_footer = true %>
+<div id="register-page">
 
-<h1>Register yo</h1>
+  <% @skip_header = true %>
+  <% @skip_footer = true %>
 
-<% if @form_error %>
-  <div><%= @form_error %></div>
-<% end %>
+  <h1>Register yo</h1>
 
-<div class="row">
-  <form action="/register" method="POST">
+  <% if @form_error %>
+    <div><%= @form_error %></div>
+  <% end %>
 
-    <div class="row">
-      <% if @user.errors[:username].any? %>
-        <div>Name <%= @user.errors[:username].first %></div>
-      <% end %>
+  <div class="row">
+    <form action="/register" method="POST">
 
-      <div class="input-field col s4">
-        <input class="validate" id="username" name="username" type="text"  />
-        <label for="username">Username</label>
+      <div class="row">
+        <% if @user.errors[:username].any? %>
+          <div>Name <%= @user.errors[:username].first %></div>
+        <% end %>
+
+        <div class="input-field col s4">
+          <input class="validate" id="username" name="username" type="text"  />
+          <label for="username">Username</label>
+        </div>
       </div>
-    </div>
 
-    <div class="row">
-      <% if @user.errors[:password].any? %>
-        <div>Password <%= @user.errors[:password].first %></div>
-      <% end %>
+      <div class="row">
+        <% if @user.errors[:password].any? %>
+          <div>Password <%= @user.errors[:password].first %></div>
+        <% end %>
 
-      <div class="input-field col s4">
-        <input class="validate" id="password" name="password" type="password" />
-        <label for="password">Password</label>
+        <div class="input-field col s4">
+          <input class="validate" id="password" name="password" type="password" />
+          <label for="password">Password</label>
+        </div>
       </div>
-    </div>
 
-    <div class="row">
-      <% if @user.errors[:password_confirmation].any? %>
-        <div><%= @user.errors[:password_confirmation].first %></div>
-      <% end %>
+      <div class="row">
+        <% if @user.errors[:password_confirmation].any? %>
+          <div><%= @user.errors[:password_confirmation].first %></div>
+        <% end %>
 
-      <div class="input-field col s4">
-        <input class="validate" id="password" name="password_confirmation" type="password" />
-        <label for="password_confirmation">Confirm Password</label>
+        <div class="input-field col s4">
+          <input class="validate" id="password" name="password_confirmation" type="password" />
+          <label for="password_confirmation">Confirm Password</label>
+        </div>
       </div>
+
+      <div>
+        <input class="btn" type="submit" name="action" value="Register" />
+      </div>
+    </form>
+
+    <div class="row col">
+      <p>Already have an account? <a id="login-link" href="/login">Log In</a></p>
     </div>
 
-    <div>
-      <input class="btn" type="submit" name="action" value="Register" />
-      <a class="btn" href="/">Cancel</a>
-    </div>
-  </form>
+  </div>
 </div>

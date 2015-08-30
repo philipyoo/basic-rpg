@@ -22,36 +22,37 @@
 <!-- Back Button -->
 
 <div>
-  <form method="link" action="/profile/<%=auth_current_user.id %>">
-    <input class="btn" type="submit" value="Back to Profile"/>
-  </form>
+  <a href="/profile/<%= @user.id %>" class="button btn">Back to Profile</a>
 </div>
-
-<% if auth_current_user %>
-<!-- Play Game Button -->
-<!-- Action requires page to game interface -->
-
-<div>
-  <form method="link" action="">
-    <input class="btn" type="submit" value="Play Game"/>
-  </form>
-</div>
-
-
-<!-- Delete Character -->
-
-<% if @form_error %>
-  <div><%= @form_error %></div>
-<% end %>
 
 <br/>
-<div class="deleteform">
-  <p>Delete Character:</p>
-  <form action="/profile/<%= auth_current_user.id %>/character/<%= @character.id %>" method="POST">
-    <input type="hidden" name="_method" value="DELETE">
 
-    <input type="text" name="confirm_pw">
-    <input onclick="return confirm('Are you sure you want to delete this character?')" type="submit" class="btn" value="Delete" />
-  </form>
-</div>
+<% if auth_current_user.id === @user.id %>
+  <!-- Play Game Button -->
+  <!-- Action requires page to game interface -->
+
+  <div>
+    <a href="#" class="button btn">Play Game</a>
+  </div>
+
+  <!-- Delete Character -->
+
+  <% if @form_error %>
+    <div><%= @form_error %></div>
+  <% end %>
+
+  <br/>
+
+  <div class="row">
+    <div class="deleteform input-field col s4">
+      <p>Delete Character:</p>
+      <form action="/profile/<%= auth_current_user.id %>/character/<%= @character.id %>" method="POST">
+        <input type="hidden" name="_method" value="DELETE">
+
+        <input type="text" name="confirm_pw">
+
+        <input onclick="return confirm('Are you sure you want to delete this character?')" type="submit" class="btn" value="Delete" />
+      </form>
+    </div>
+  </div>
 <% end %>
