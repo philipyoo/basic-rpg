@@ -16,7 +16,7 @@ $(document).ready(function() {
 ////      AJAXify something         ////
 ////////////////////////////////////////
 
-// TODO: How to keep ajax constant so route never changes???
+// TODO: How to keep ajax running constantly so route never changes???
 
 // Home page to Login page
 var homeToLogin = function() {
