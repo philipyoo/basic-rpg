@@ -1,11 +1,10 @@
 
 <!-- Create Partials for Nav Bar -->
 
-
 <nav>
-  <div class="nav-wrapper">
+  <div class="nav-wrapper teal">
 
-    <ul id="nav-mobile" class="left hide-on-med-and-down">
+    <ul id="nav-mobile" class="left">
       <li><a href="/">Home</a></li>
 
       <% if auth_logged_in? === false %>
@@ -18,6 +17,7 @@
           <%= auth_current_user.username %>
         </a>
 
+        <li><a href="/profile/<%= auth_current_user.id %>">Profile</a></li>
         <li><a href="/profile/<%= auth_current_user.id %>/edit">Edit</a></li>
         <li><a href="/logout">Logout</a></li>
       <% else %>

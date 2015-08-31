@@ -6,7 +6,6 @@ get '/profile/:user_id/character/:id' do
 
   @user_chars_by_id = @user.get_all_characters
 
-
   erb :'characters/profile'
 end
 
@@ -49,9 +48,10 @@ end
 #delete character
 delete '/profile/:user_id/character/:id' do |user_id, id|
   @character = Character.find_by_id(id)
-  user = User.find_by_id(user_id)
+  @user = User.find_by_id(user_id)
+  @user_chars_by_id = @user.get_all_characters
 
-  if (user && user.password == params[:confirm_pw])
+  if (@user && @user.password == params[:confirm_pw])
     @character.destroy
     redirect "/profile/#{user_id}"
   else

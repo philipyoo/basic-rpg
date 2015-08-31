@@ -27,20 +27,22 @@
 
   <title>Basic RPG</title>
 </head>
-<body>
-
-
+<header>
   <%= erb :_header unless @skip_header %>
+</header>
+<main>
 
-  <div id='wrap-this-yield'>
+  <div id='wrap-this-yield' class="container">
     <%= yield %>
   </div>
 
-  <%= erb :_footer unless @skip_footer %>
 
 
   <!--Import jQuery before materialize.js-->
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script type="text/javascript" src="/js/bin/materialize.js"></script>
-</body>
+</main>
+<footer>
+  <%= erb :_footer unless @skip_footer %>
+</footer>
 </html>

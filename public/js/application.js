@@ -3,6 +3,8 @@ $(document).ready(function() {
   $('select').material_select();
 
   homeToLogin();
+  loginToRegister();
+  registerToLogin();
 
   statAdjuster();
   statSubmittal();
@@ -13,6 +15,8 @@ $(document).ready(function() {
 ////////////////////////////////////////
 ////      AJAXify something         ////
 ////////////////////////////////////////
+
+// TODO: How to keep ajax running constantly so route never changes???
 
 // Home page to Login page
 var homeToLogin = function() {
@@ -26,6 +30,27 @@ var homeToLogin = function() {
   });
 }
 
+var loginToRegister = function() {
+  $('#register-link').on('click', 'a', function(e) {
+    e.preventDefault();
+    var some_cb = function(response) {
+      $('#wrap-this-yield').replaceWith(response);
+    };
+
+    ajaxConstructor('get', '/register', null, 'html', some_cb);
+  });
+}
+
+var registerToLogin = function() {
+  $('#login-link').on('click', 'a', function(e) {
+    e.preventDefault();
+    var some_cb = function(response) {
+      $('#wrap-this-yield').replaceWith(response);
+    };
+
+    ajaxConstructor('get', '/login', null, 'html', some_cb);
+  });
+}
 
 
 
