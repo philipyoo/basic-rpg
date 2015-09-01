@@ -117,3 +117,20 @@ button.sub {
   width: 50px;
   height: 50px;
 }
+
+#side-navbar {
+  background-color: gray;
+  position: relative;
+  height: 100%;
+  width: 20%;
+}
+
+#other-layout {
+  position: relative;
+}
+
+#wrap-this-thing {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}

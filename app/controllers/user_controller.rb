@@ -51,7 +51,7 @@ post '/register' do
     if test_pw.size == 0
       @form_error = "Dude... Type in a password."
     elsif confirm_pw == false
-      @form_error = "Dude... You typed your confirmation password incorrecty."
+      @form_error = "Dude... You typed your confirmation password incorrectly."
     else
       @form_error = "Username has already been taken. Please select another Username."
     end

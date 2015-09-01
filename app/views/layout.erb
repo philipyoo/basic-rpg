@@ -32,10 +32,23 @@
 </header>
 <main>
 
-  <div id='wrap-this-yield' class="container">
-    <%= yield %>
-  </div>
 
+  <% if @side_bar == true %>
+    <div class="row" id="wrap-this-thing">
+      <div class="col s3" id="side-navbar">
+        <%= erb :_navbar %>
+      </div>
+      <div class="container">
+        <div class="col s9" id="other-layout">
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+  <% else %>
+    <div id='wrap-this-yield' class="container">
+      <%= yield %>
+    </div>
+  <% end %>
 
 
   <!--Import jQuery before materialize.js-->
