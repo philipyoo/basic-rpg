@@ -24,14 +24,17 @@
 ## Character Details/Edit + Equip, Items, Stats (With notification if unassigned stat points exist), Exit Play Mode
 
 
+# Initial play route that will display "Character Details/Edit"
 get '/character/:id/play' do
   @character = Character.find(params[:id])
   erb :'maps/index'
 end
 
+# Select a stage route "Select Stage"
 get '/character/:id/map' do
   erb :'maps/select_stage'
 end
+
 
 
 

@@ -134,3 +134,6 @@ button.sub {
   height: 100%;
   width: 100%;
 }
+
+.yolo2 { width: 100%; list-style: none;}
+.yolo {float: left; width: 100%; text-align: center; display: inline-block; overflow: hidden; }
