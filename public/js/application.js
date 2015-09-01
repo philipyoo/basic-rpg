@@ -57,7 +57,6 @@ var registerToLogin = function() {
 ////////////////////////////////////////
 ////      AJAX Constructor Yo       ////
 ////////////////////////////////////////
-// TODO: Create AJAX constructor for AJAX use
 
 
 var ajaxConstructor = function(m, u, d, dt, cb){
