@@ -3,8 +3,25 @@
 <% @skip_footer = true %>
 
 
-<li>Link 1</li>
-<li>Link 2</li>
-<p>Link 3</p>
-<p>Link 4</p>
-<p>Link 5</p>
+<!-- TODO: Fix link width to fill div if possible, yolo/yolo2 -->
+
+<nav>
+  <div class="nav-wrapper">
+    <ul id="nav-mobile" class="left yolo2">
+      <%= auth_current_user.username %>
+
+      <div class="divider"></div>
+
+      <li class="yolo"><a href="/character/<%= params[:id] %>/play" >Profile</a></li><br/>
+
+      <li class="yolo"><a href="/character/<%= params[:id] %>/play" >Inventory</a></li><br/>
+
+      <li class="yolo"><a href="/character/<%= params[:id] %>/play" >Stats</a></li><br/>
+
+      <li class="yolo"><a href="/profile/<%= auth_current_user.id %>" >Exit Play Mode</a></li><br/>
+
+      <li class="yolo"><a href="/logout">Logout</a></li>
+
+    </ul>
+  </div>
+</nav>
