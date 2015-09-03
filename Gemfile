@@ -17,6 +17,10 @@ gem 'bcrypt-ruby'
 gem 'rake'
 
 gem 'shotgun'
+gem 'poke-api'
+gem 'httpclient'
+gem 'httparty'
+gem 'dotenv'
 
 group :test do
   gem 'database_cleaner', '~> 1.4.1'
