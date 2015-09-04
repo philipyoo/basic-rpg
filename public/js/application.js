@@ -11,7 +11,6 @@ $(document).ready(function() {
 
 
 
-
   ////////////////////////////////////////
   ////      AJAXify something         ////
   ////////////////////////////////////////
@@ -193,7 +192,7 @@ $(document).ready(function() {
     })
   };
 
-  
+
 
   ////////////////////////////////////////
   //// CHARACTER PAGE DELETE OPTION   ////

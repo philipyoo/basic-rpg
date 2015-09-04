@@ -32,7 +32,6 @@
 get '/character/:id/play' do
   @character = Character.find(params[:id])
 
-
   erb :'maps/index'
 end
 
@@ -74,7 +73,7 @@ put '/character/:id' do |id|
 end
 
 
-# Route to Stage 1
+# Route to Stages depending on difficulty
 get '/character/:id/map/:map_id' do
   @character = Character.find(params[:id])
 
@@ -102,13 +101,51 @@ get '/character/:id/map/:map_id' do
   end
 end
 
+
 get '/character/:id/battle/:battle_id' do
   @character = Character.find(params[:id])
   @monster = Encounter.find(params[:battle_id])
-  @new_m = Encounter.find(params[:battle_id])
+
 
   erb :'maps/battle'
 end
+
+
+post '/character/:id/battle/:battle_id' do
+  @character = Character.find(params[:id])
+  @monster = Encounter.find(params[:battle_id])
+  @message = ""
+  m_atk = @monster.attack_pt
+  m_def = @monster.defense_pt
+  c_atk = @character.randomizer
+  c_def = @character.randomizer / 2
+
+
+  @character.hp -= Character.take_dmg(m_atk, c_def)
+  @monster.hp -= Encounter.take_dmg(c_atk, m_def)
+
+
+  @character.save
+  @monster.save
+
+  if @character.hp <= 0 && @monster.hp <= 0
+    #tie
+    @message = "Tie!"
+    erb :'maps/battle'
+  elsif @monster.hp <= 0
+    #win
+    @message = "You Won!"
+    erb :'maps/battle'
+  elsif @character.hp <= 0
+    #lost
+    @message = "You Lost!"
+    erb :'maps/battle'
+  else
+    redirect "/character/#{params[:id]}/battle/#{params[:battle_id]}"
+  end
+end
+
+
 
 
 #
