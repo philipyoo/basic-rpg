@@ -152,3 +152,17 @@ button.sub {
   text-align: center;
 
 }
+
+.form-message {
+  border: 1px gray solid;
+  text-align: center;
+}
+
+img.resize{
+   width:150px;
+   height:150px;
+}
+
+.bordering {
+  border: 1px gray solid;
+}

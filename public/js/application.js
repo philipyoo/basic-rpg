@@ -19,52 +19,51 @@ $(document).ready(function() {
   // TODO: How to keep ajax running constantly so route never changes???
 
 
+  // function homeToLogin() {
+  //   $('#wrap-this-yield').on('click', '#home-page-btn', function(e) {
+  //     e.preventDefault();
+  //
+  //     $('#explode-this').fadeOut();
+  //
+  //     // $('#explode-this').toggle('explode');
+  //
+  //     $.get( "/login" ).done(function(response) {
+  //       $('#wrap-this-yield').replaceWith(response);
+  //     });
+  //   })
+  // }
+
+
+
   function homeToLogin() {
     $('#wrap-this-yield').on('click', '#home-page-btn', function(e) {
       e.preventDefault();
 
-      $('#explode-this').toggle('explode');
+      $('#explode-this').fadeOut();
 
-      $.get( "/login" ).done(function(response) {
+      var some_cb = function(response) {
         $('#wrap-this-yield').replaceWith(response);
-      });
-    })
+      };
+
+      ajaxConstructor('get', '/login', null, 'html', some_cb);
+    });
   }
 
-
-
-  // function homeToLogin() {
-  //   $('#wrap-this-yield').on('click', '#home-page-btn', function(e) {
-  //     e.preventDefault();
-  //     var some_cb = function(response) {
-  //       $('#wrap-this-yield').replaceWith(response);
-  //     };
-  //
-  //     ajaxConstructor('get', '/login', null, 'html', some_cb);
-  //   });
-  // }
-
-
-  // function loginToRegister() {
-  //   console.log("listening");
-  //   $('#register-button').on('click', '#register-form', function(e) {
-  //     debugger
-  //     e.preventDefault();
-  //     var some_cb = function(response) {
-  //       $('#register-form').replaceWith(response);
-  //     };
-  //
-  //     ajaxConstructor('get', '/register', null, 'html', some_cb);
-  //   });
-  // }
 
   function loginToRegister() {
     console.log("listening");
-    $("a").click(function (e){
-      console.log("clicked");
+    $('#register-button').on('click', '#register-form', function(e) {
+      debugger
       e.preventDefault();
-    })
+      var some_cb = function(response) {
+        $('#register-form').replaceWith(response);
+      };
+
+      ajaxConstructor('get', '/register', null, 'html', some_cb);
+    });
   }
+
+
 
   function registerToLogin() {
     $('#wrap-this-yield').on('click', '#login-link', function(e) {
@@ -107,8 +106,8 @@ $(document).ready(function() {
   ////////////////////////////////////////
 
   function SetInitialStats() {
-    MAX = 15;
-    this.total = 15;
+    MAX = 20;
+    this.total = 20;
     this.atk = 0;
     this.def = 0;
   }
@@ -194,6 +193,7 @@ $(document).ready(function() {
     })
   };
 
+  
 
   ////////////////////////////////////////
   //// CHARACTER PAGE DELETE OPTION   ////
