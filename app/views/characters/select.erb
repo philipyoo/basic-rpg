@@ -6,7 +6,9 @@
 <!-- 1. Select Name, Select Avatar/Upload Avatar -->
 <!-- 2. ATK/ARMOR Stat selection -->
 <!-- 3. STRETCH == Character Types -->
-<% %>
+<% if @form_error %>
+  <div><%= @form_error %></div>
+<% end %>
 
 <h1>Character Creation</h1>
 
