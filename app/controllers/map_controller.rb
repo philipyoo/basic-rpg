@@ -32,7 +32,6 @@
 get '/character/:id/play' do
   @character = Character.find(params[:id])
 
-
   erb :'maps/index'
 end
 
@@ -74,39 +73,79 @@ put '/character/:id' do |id|
 end
 
 
-# Route to Stage 1
+# Route to Stages depending on difficulty
 get '/character/:id/map/:map_id' do
   @character = Character.find(params[:id])
 
-  if params[:map_id] != '4'
+  map_id = params[:map_id]
+
+  if map_id != '4'
 
     @monster = Encounter.all[rand(150) + 1]
-    # hp = @monster.hp
-    # atk = @monster.atk
-    # defe = @monster.def
-    # {hp: hp, atk: atk, def: defe}
-    if Encounter.stage(@monster) != params[:map_id]
+
+    while Encounter.stage(@monster) != map_id
       @monster = Encounter.all[rand(150) + 1]
     end
 
-    erb :'maps/stage1'
+    if map_id == "1"
+      erb :'maps/stage1'
+    elsif map_id == "2"
+      erb :'maps/stage2'
+    else
+      erb :'maps/stage3'
+    end
+
   else
     @monster = Encounter.all[rand(150..151)]
     erb :'maps/stage4'
   end
 end
 
+
 get '/character/:id/battle/:battle_id' do
   @character = Character.find(params[:id])
   @monster = Encounter.find(params[:battle_id])
-  @new_m = Encounter.find(params[:battle_id])
 
-  p @monster
-  p '*' * 100
-  p @character
 
   erb :'maps/battle'
 end
+
+
+post '/character/:id/battle/:battle_id' do
+  @character = Character.find(params[:id])
+  @monster = Encounter.find(params[:battle_id])
+  @message = ""
+  m_atk = @monster.attack_pt
+  m_def = @monster.defense_pt
+  c_atk = @character.randomizer
+  c_def = @character.randomizer / 2
+
+
+  @character.hp -= Character.take_dmg(m_atk, c_def)
+  @monster.hp -= Encounter.take_dmg(c_atk, m_def)
+
+
+  @character.save
+  @monster.save
+
+  if @character.hp <= 0 && @monster.hp <= 0
+    #tie
+    @message = "Tie!"
+    erb :'maps/battle'
+  elsif @monster.hp <= 0
+    #win
+    @message = "You Won!"
+    erb :'maps/battle'
+  elsif @character.hp <= 0
+    #lost
+    @message = "You Lost!"
+    erb :'maps/battle'
+  else
+    redirect "/character/#{params[:id]}/battle/#{params[:battle_id]}"
+  end
+end
+
+
 
 
 #

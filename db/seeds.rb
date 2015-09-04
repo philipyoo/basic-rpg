@@ -26,16 +26,19 @@ AllItem.create(:name => 'Basic Shield', :description => 'defense!', :level_restr
 loader = Loader.new('pokemon')
 x = 1
 
+
 while x < 151
   pokemon = loader.find(x)
 
-  Encounter.create(:name => pokemon["name"], :hp => pokemon["hp"], :atk => pokemon["attack"], :def => pokemon["defense"], :exp => pokemon["exp"], :speed => pokemon["speed"], :image => "/img/#{x}.png")
+  e = Encounter.create(:name => pokemon["name"], :hp => pokemon["hp"].to_i, :atk => pokemon["attack"].to_i, :def => pokemon["defense"].to_i, :exp => pokemon["exp"].to_i, :speed => pokemon["speed"].to_i, :image => "/img/#{x}.png")
 
-  moves = pokemon["moves"].select{ |move| move["learn_type"] == "level up" }
-
-  mload = Loader.new('move')
+  p e
 
   # GOT RID OF THIS. LEAVING JUST IN CASE
+  # moves = pokemon["moves"].select{ |move| move["learn_type"] == "level up" }
+
+  # mload = Loader.new('move')
+
   # moves.each do |move|
   #   pokemon_move = mload.find(move["resource_uri"][7..-1].match(/\d+/)[0].to_i)
   #

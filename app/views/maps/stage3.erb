@@ -2,7 +2,7 @@
 <% @skip_footer = true %>
 <% @skip_header = true %>
 
-<h1>Stage 1</h1>
+<h1>Stage 3</h1>
 <div class="divider"></div>
 
 <p>You ran into <%= @monster.name %>!</p>
@@ -12,7 +12,6 @@
 <p>
   <a href="/character/<%= @character.id %>/battle/<%= @monster.id %>" class="button btn">Battle?</a>
 </p>
-
 
 <p>
   <a href="/character/<%= @character.id %>/map/<%= params[:map_id] %>" class="button btn">Find New Opponent?</a>

@@ -85,9 +85,6 @@ end
 put '/profile/:id' do |id|
   @user = User.find(params[:id])
 
-
-  p params
-
   if @user.save
     auth_current_user.update(params[:user])
     @form_message = "Edited account information"
