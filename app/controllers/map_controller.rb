@@ -78,18 +78,24 @@ end
 get '/character/:id/map/:map_id' do
   @character = Character.find(params[:id])
 
-  if params[:map_id] != '4'
+  map_id = params[:map_id]
+
+  if map_id != '4'
 
     @monster = Encounter.all[rand(150) + 1]
-    # hp = @monster.hp
-    # atk = @monster.atk
-    # defe = @monster.def
-    # {hp: hp, atk: atk, def: defe}
-    if Encounter.stage(@monster) != params[:map_id]
+
+    while Encounter.stage(@monster) != map_id
       @monster = Encounter.all[rand(150) + 1]
     end
 
-    erb :'maps/stage1'
+    if map_id == "1"
+      erb :'maps/stage1'
+    elsif map_id == "2"
+      erb :'maps/stage2'
+    else
+      erb :'maps/stage3'
+    end
+
   else
     @monster = Encounter.all[rand(150..151)]
     erb :'maps/stage4'
@@ -100,10 +106,6 @@ get '/character/:id/battle/:battle_id' do
   @character = Character.find(params[:id])
   @monster = Encounter.find(params[:battle_id])
   @new_m = Encounter.find(params[:battle_id])
-
-  p @monster
-  p '*' * 100
-  p @character
 
   erb :'maps/battle'
 end
