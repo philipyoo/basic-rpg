@@ -7,8 +7,8 @@ admin = User.find_or_create_by!(:username => 'admin', :password_hash => temp_pas
 
 # create test characters
 
-admin.characters.find_or_create_by!(:name => 'Ace', :hp => 100, :xp => 0, :level => 2, :atk => 10, :def => 10, :unassigned => 0)
-admin.characters.find_or_create_by!(:name => 'Bay', :hp => 80, :xp => 0, :level => 1, :atk => 6, :def => 12, :unassigned => 0)
+admin.characters.find_or_create_by!(:name => 'Ace', :hp => 1, :xp => 0, :level => 2, :atk => 10, :def => 10, :unassigned => 0)
+admin.characters.find_or_create_by!(:name => 'Bay', :hp => 1, :xp => 0, :level => 1, :atk => 6, :def => 12, :unassigned => 0)
 
 admin.characters.find_or_create_by!(:name => 'Winner', :hp => 10000, :xp => 0, :level => 1, :atk => 25, :def => 25, :unassigned => 0)
 
@@ -19,12 +19,6 @@ AllItem.create(:name => 'Basic HP Potion', :description => 'heal', :level_restri
 AllItem.create(:name => 'Basic Shield', :description => 'defense!', :level_restriction => 2, :def => 5)
 
 ########
-
-# create all bosses
-
-Encounter.create(:name => "Brick", :hp => 1000, :atk => 1000, :def => 1000, :exp => 1000, :speed => 1000, :image =>"/public/img/brock.png")
-
-Encounter.create(:name => "Bootcoder", :hp => 1000, :atk => 1000, :def => 1000, :exp => 1000, :speed => 1000, :image => "/public/img/bootcoder.png")
 
 
 # create all monsters
@@ -58,3 +52,11 @@ while x < 151
 
   x += 1
 end
+
+
+
+# create all bosses
+
+Encounter.create(:name => "Brick", :hp => 1000, :atk => 1000, :def => 1000, :exp => 1000, :speed => 1000, :image =>"/img/brock.png")
+
+Encounter.create(:name => "Bootcoder", :hp => 1000, :atk => 1000, :def => 1000, :exp => 1000, :speed => 1000, :image => "/img/bootcoder.png")
