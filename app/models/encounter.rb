@@ -15,12 +15,17 @@ class Encounter < ActiveRecord::Base
     end
   end
 
+  def self.take_dmg(c_atk, m_def)
+    return (c_atk - (m_def / 4))
+  end
+
   def attack_pt
-    (self.atk / 5) + self.level * (rand(10))
+    (self.atk / 5) + (rand(10))
   end
 
   def defense_pt
-    (self.def / 5) + self.level * (rand(10))
+    (self.def / 5) + (rand(10)) / 4
   end
+
 
 end

@@ -8,6 +8,10 @@ class Character < ActiveRecord::Base
 
   HP_TIER = [0, 80, 100, 120, 140, 170, 200]
 
+  def self.take_dmg(m_atk, c_def)
+    return (m_atk - (c_def))
+  end
+
   def level_up
     while true
       if self.xp > LEVEL_TIER[self.level]
@@ -31,6 +35,7 @@ class Character < ActiveRecord::Base
   def randomizer
     self.level * (rand(10))
   end
+
 
   private
 
