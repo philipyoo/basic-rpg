@@ -1,0 +1,14 @@
+<% @side_bar = true %>
+<% @skip_footer = true %>
+<% @skip_header = true %>
+
+<h1>Stage 2</h1>
+<div class="divider"></div>
+
+<p>You ran into <%= @monster.name %>!</p>
+<p><img class="resize" src="<%= @monster.image %>" /></p>
+
+
+<p>
+  <a href="/character/<%= @character.id %>/battle/<%= @monster.id %>" class="button btn">Battle?</a>
+</p>
