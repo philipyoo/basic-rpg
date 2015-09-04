@@ -1,7 +1,7 @@
 <% if auth_current_user.id === (params[:id].to_i) %>
 
   <% if @form_message %>
-    <div><%= @form_message %></div>
+    <div class="form-message"><%= @form_message %></div>
   <% end %>
 
   <div class="row">

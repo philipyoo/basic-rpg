@@ -7,6 +7,7 @@ class CreateCharacters < ActiveRecord::Migration
       t.integer :level
       t.integer :atk
       t.integer :def
+      t.integer :unassigned
 
       t.timestamps
 

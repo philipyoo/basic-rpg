@@ -24,7 +24,7 @@ post '/profile/:user_id/select' do
   # if true  #edit total_stats > x
     # redirect "/profile/#{auth_current_user.id}/character/"
   # else
-    auth_current_user.characters.create!(:name => params[:name], :hp => 80, :xp => 0, :level => 1, :atk => params[:atk], :def => params[:def])
+    auth_current_user.characters.create!(:name => params[:name], :hp => 80, :xp => 0, :level => 1, :atk => params[:atk], :def => params[:def], :unassigned => 0)
   # end
 
   redirect "/profile/#{auth_current_user.id}"
