@@ -1,74 +1,15 @@
 
 <% @side_bar = true %>
+<% @skip_footer = true %>
+<% @skip_header = true %>
 
 <h1>Profile</h1>
 <div class="divider"></div>
 
 <li>Name: <%= @character.name %></li>
 
-<li>HP: <%= @character.hp %></li>
+<li>HP: <%= @character.hp %> / <%= @character.max_hp %></li>
 <li>XP: <%= @character.xp %></li>
 <li>Level: <%= @character.level %></li>
 <li>Attack: <%= @character.atk %></li>
 <li>Armor: <%= @character.def %></li>
-
-
-<div style="background-color: gray">
-  <p>
-    Name:
-    <%= @first_mon["name"] %>
-  </p>
-  <p>
-    HP:
-    <%= @first_mon["hp"] %>
-  </p>
-  <p>
-    Attack:
-    <%= @first_mon["attack"] %>
-  </p>
-  <p>
-    Defense:
-    <%= @first_mon["defense"] %>
-  </p>
-  <p>
-    Exp:
-    <%= @first_mon["exp"] %>
-  </p>
-</div>
-
-
-<div style="background-color: gray">
-  <p>
-    Name:
-    <%= @mon7["name"] %>
-  </p>
-  <p>
-    HP:
-    <%= @mon7["hp"] %>
-  </p>
-  <p>
-    Attack:
-    <%= @mon7["attack"] %>
-  </p>
-  <p>
-    Defense:
-    <%= @mon7["defense"] %>
-  </p>
-  <p>
-    Exp:
-    <%= @mon7["exp"] %>
-  </p>
-</div>
-
-<div style="background-color: gray">
-  <% @mon7["moves"].each do |move| %>
-    <% if move["learn_type"] == "level up" %>
-      <p><%= move["name"] %></p>
-    <% end %>
-
-  <% end %>
-</div>
-
-<div style="background-color: gray">
-  <%= @movers5 %>
-</div>

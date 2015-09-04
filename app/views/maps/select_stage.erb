@@ -1,4 +1,5 @@
 
+<% @skip_footer = true %>
 <% @skip_header = true %>
 <% @side_bar = true %>
 
@@ -10,11 +11,26 @@
   <div class="col s12 m6">
     <div class="card stage-details">
       <div class="card-image">
-        <img src="https://images.unsplash.com/photo-1424746219973-8fe3bd07d8e3?q=80&fm=jpg&s=69c2c4804c5892bd8f882afa7ee4e003">
+        <img class="resize" src="http://digital-art-gallery.com/oid/100/640x272_17375_Old_Ruin_Environment_concept_2d_fantasy_environment_landscape_forest_cave_picture_image_digital_art.jpg">
         <span class="card-title">Stage 1</span>
       </div>
       <div class="card-content">
-        <p>Stage Details.</p>
+        <p>Easy. Some info in here</p>
+      </div>
+      <div class="card-action">
+        <a href="/character/<%= @character.id %>/map/1">Enter</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="col s12 m6">
+    <div class="card stage-details">
+      <div class="card-image">
+        <img class="resize" src="https://s-media-cache-ak0.pinimg.com/736x/63/84/33/638433c5d0224ffc828b8b8c73aceae1.jpg">
+        <span class="card-title">Stage 2</span>
+      </div>
+      <div class="card-content">
+        <p>Medium</p>
       </div>
       <div class="card-action">
         <a href="#">Enter</a>
@@ -25,14 +41,29 @@
   <div class="col s12 m6">
     <div class="card stage-details">
       <div class="card-image">
-        <img src="https://images.unsplash.com/photo-1424746219973-8fe3bd07d8e3?q=80&fm=jpg&s=69c2c4804c5892bd8f882afa7ee4e003">
-        <span class="card-title">Stage 2</span>
+        <img class="resize" src="http://img06.deviantart.net/10e6/i/2012/213/e/8/vulcano_land_by_theshock-d59gd50.png">
+        <span class="card-title">Stage 3</span>
       </div>
       <div class="card-content">
-        <p>Stage Details.</p>
+        <p>Hard</p>
       </div>
       <div class="card-action">
         <a href="#">Enter</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="col s12 m6">
+    <div class="card stage-details">
+      <div class="card-image">
+        <img class="resize" src="https://s-media-cache-ak0.pinimg.com/736x/86/9c/46/869c46629ff4579b14c0ee0618cf2955.jpg">
+        <span class="card-title">Stage 4</span>
+      </div>
+      <div class="card-content">
+        <p>Impossible.</p>
+      </div>
+      <div class="card-action">
+        <a href="/character/<%= @character.id %>/map/4">Enter</a>
       </div>
     </div>
   </div>
