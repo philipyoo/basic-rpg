@@ -7,7 +7,7 @@
 
 <nav>
   <div class="nav-wrapper teal">
-    <p><center><%= auth_current_user.username %></center></p>
+    <p><center><%= @character.name %></center></p>
     <ul id="nav-mobile" class="left random-max-width">
 
       <div class="divider"></div>
@@ -19,6 +19,8 @@
       <li class="li-max-width"><a href="/character/<%= params[:id] %>/map" >Explore Stages</a></li><br/>
 
       <li class="li-max-width"><a href="/character/<%= params[:id] %>/settings" >Settings</a></li><br/>
+
+      <li class="li-max-width"><a href="/character/<%= params[:id] %>/pun" >Rajal Pun</a></li><br/>
 
       <li class="li-max-width"><a href="/profile/<%= auth_current_user.id %>" >Exit Play Mode</a></li><br/>
 
