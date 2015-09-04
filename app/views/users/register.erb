@@ -2,6 +2,9 @@
 
 <% @skip_header = true %>
 <% @skip_footer = true %>
+<div class="bg-img">
+
+
 <div id="register-form">
 <h1>Register yo</h1>
 
@@ -9,7 +12,7 @@
   <div><%= @form_error %></div>
 <% end %>
 
-<div class="row">
+<div class="row center-align">
   <form action="/register" method="POST">
 
     <div class="row">
@@ -55,4 +58,6 @@
   </div>
 
 </div>
+</div>
+
 </div>

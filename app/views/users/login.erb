@@ -1,6 +1,9 @@
 
 <% @skip_header = true %>
 <% @skip_footer = true %>
+
+<div class="bg-img">
+
 <div id="login-form">
 <h1>Login</h1>
 
@@ -8,7 +11,7 @@
   <div><%= @form_error %></div>
 <% end %>
 
-<div class="row">
+<div class="row center-align">
   <form class="col s12" action="/login" method="POST">
 
     <div class="row">
@@ -34,5 +37,6 @@
 
 <div class="row col" id="register-link">
   <p>Don't have an account yet? <a href="/register" id="register-button">Register</a></p>
+</div>
 </div>
 </div>
