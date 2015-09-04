@@ -26,3 +26,20 @@
   <div class="col s2"></div>
   <div class="col s2"></div>
 </div>
+
+
+<p>
+  <% if @character.hp <= 0 || @monster.hp <= 0 %>
+    <div><%= @message %></div>
+    <% if @character.hp <= 0 %>
+    <img src="/img/deal_with_it.gif" />
+    <% elsif @monster.hp <= 0 %>
+      <img src="/img/like_a_boss.gif" />
+    <% end %>
+  <% else %>
+
+    <form action="/character/<%= @character.id %>/battle/<%= @monster.id %>" method="POST">
+      <input class="btn" type="submit" name="action" value="Attack" />
+    </form>
+  <% end %>
+</p>
