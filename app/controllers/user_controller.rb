@@ -84,8 +84,9 @@ end
 
 put '/profile/:id' do |id|
   @user = User.find(params[:id])
-  @user.username = params[:username]
-  @user.password = params[:password]
+
+
+  p params
 
   if @user.save
     auth_current_user.update(params[:user])
