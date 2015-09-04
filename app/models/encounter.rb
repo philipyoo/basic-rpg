@@ -2,7 +2,7 @@ class Encounter < ActiveRecord::Base
   has_many :moves, through: :encounter_moves
   has_many :encounter_moves
 
-  attr_reader :hp, :atk, :def
+  attr_accessor :hp, :atk, :def
 
   #test hp+atk+def
   def self.stage(stats)

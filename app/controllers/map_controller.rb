@@ -99,6 +99,7 @@ end
 get '/character/:id/battle/:battle_id' do
   @character = Character.find(params[:id])
   @monster = Encounter.find(params[:battle_id])
+  @new_m = Encounter.find(params[:battle_id])
 
   p @monster
   p '*' * 100
