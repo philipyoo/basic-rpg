@@ -1,6 +1,10 @@
 
 get '/' do
-  erb :index
+  if request.xhr?
+    erb :index, { layout: false }
+  else
+    erb :index
+  end
 end
 
 get '/login' do
@@ -9,7 +13,11 @@ get '/login' do
   end
   @username = ''
 
-  erb :'users/login'
+  if request.xhr?
+    erb :'users/login', { layout: false }
+  else
+    erb :'users/login'
+  end
 end
 
 post '/login' do
@@ -32,7 +40,11 @@ get '/register' do
 
   @user = User.new
 
-  erb :'users/register'
+  if request.xhr?
+    erb :'users/register', { layout: false }
+  else
+    erb :'users/register'
+  end
 end
 
 post '/register' do
