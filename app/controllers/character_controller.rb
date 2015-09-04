@@ -12,6 +12,7 @@ end
 #create character page
 get '/profile/:user_id/select' do
   @user = User.find(params[:user_id])
+
   erb :'characters/select'
 end
 
@@ -24,10 +25,16 @@ post '/profile/:user_id/select' do
   # if true  #edit total_stats > x
     # redirect "/profile/#{auth_current_user.id}/character/"
   # else
+  if params[:name].size < 2
+    @form_error = "Character Name must be at least 2 characters long."
+    erb :'characters/select'
+  else
     auth_current_user.characters.create!(:name => params[:name], :hp => 80, :xp => 0, :level => 1, :atk => params[:atk], :def => params[:def], :unassigned => 0)
   # end
 
-  redirect "/profile/#{auth_current_user.id}"
+
+    redirect "/profile/#{auth_current_user.id}"
+  end
 end
 
 
