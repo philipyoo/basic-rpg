@@ -1,7 +1,7 @@
 
 <% @skip_header = true %>
 <% @skip_footer = true %>
-
+<div id="login-form">
 <h1>Login</h1>
 
 <% if @form_error %>
@@ -33,5 +33,6 @@
 </div>
 
 <div class="row col" id="register-link">
-  <p>Don't have an account yet? <a href="/register">Register</a></p>
+  <p>Don't have an account yet? <a href="/register" id="register-button">Register</a></p>
+</div>
 </div>
