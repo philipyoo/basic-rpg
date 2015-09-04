@@ -135,5 +135,20 @@ button.sub {
   width: 100%;
 }
 
-.yolo2 { width: 100%; list-style: none;}
-.yolo {float: left; width: 100%; text-align: center; display: inline-block; overflow: hidden; }
+.random-max-width {
+  width: 100%;
+  list-style: none;
+}
+
+.li-max-width {
+  float: left;
+  width: 100%;
+  text-align: center;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.stage-details {
+  text-align: center;
+
+}
