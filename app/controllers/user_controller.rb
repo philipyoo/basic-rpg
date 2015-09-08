@@ -120,3 +120,8 @@ get '/profile/:id' do
 
   erb :'users/profile'
 end
+
+not_found do
+  status 404
+  erb :oops
+end
